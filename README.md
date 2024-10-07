@@ -20,6 +20,39 @@ Three.js konnte passend sein (https://threejs.org/examples/#webgl_interactive_ra
 
 ### Variablen
     let variableName = Value; 
-        //dynamische Variable, die im Programm einfsch einem neuen Variablentypen zugeordnet werden kann.
+        // dynamische Variable, die im Programm einfsch einem neuen Variablentypen zugeordnet werden kann.
     const constName = constant;
         // Variable ist konstand und kann keinen neuen Wert zugeordnet bekommen.
+
+### Objekte
+    let objektName = {
+        name: 'Name',
+        age: Zahl
+    };
+        // Objekt erstellen
+
+    Dot Notation:
+    objektName.Attdribut ;
+        // auf Attribut zugreifen/ändern
+
+    Bracket Notation:
+    objektName['Attribut'] = ...;
+        // wie Bot Notation
+        // kann auch dynamisch mit zusätzlicher Variablen verwendet werden (vorteil)
+
+### Listen
+    let arrayName = [element1, element2];
+        // klassische Array Funktionalität
+        // Variablentyp ist nicht relevant (kann unterschiedlich sein)
+    arrayName.lenght
+        // länge von Array wiedergeben
+
+
+### Funktienen
+
+    finction functionName(parameter1, parameter2, ...) {
+        inhalt
+        return ...;
+    }
+
+    functionName(argument1, argument2, ...);
