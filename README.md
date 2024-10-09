@@ -11,8 +11,10 @@ Three.js konnte passend sein (https://threejs.org/examples/#webgl_interactive_ra
 
 
 ## Fragen:
-* WebApp oder Standalone?
+* WebApp oder Standalone? (node?)
 * Mikro Audio zuerst "Speichern" und dann transformieren oder in real time dynamisch wandeln?
+* Zusatzfunktionen?
+* 
 
 
 
