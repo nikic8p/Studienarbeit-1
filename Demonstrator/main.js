@@ -18,99 +18,31 @@ function main() {
 	camera.lookAt( 0, 0, 0 );
 
 	const scene = new THREE.Scene();
+    
 
 	{
 
 		const color = 0xFFFFFF;
 		const intensity = 500;
 		const light = new THREE.PointLight( color, intensity );
+        light.position.set(0,20,0);
 		scene.add( light );
 
 	}
-
-	// an array of objects who's rotation to update
-	const objects = [];
-
-	const radius = 1;
-	const widthSegments = 6;
-	const heightSegments = 6;
-	const sphereGeometry = new THREE.SphereGeometry(
-		radius, widthSegments, heightSegments 
-    );
-
-    const solarSystem = new THREE.Object3D();
-    scene.add(solarSystem);
-    objects.push(solarSystem);
-
-	const sunMaterial = new THREE.MeshPhongMaterial( { emissive: 0xFFFF00 } );
-	const sunMesh = new THREE.Mesh( sphereGeometry, sunMaterial );
-	sunMesh.scale.set( 5, 5, 5 );
-	solarSystem.add( sunMesh );
-	objects.push( sunMesh );
-
-    const earthOrbit = new THREE.Object3D();
-    earthOrbit.position.x = 10;
-    solarSystem.add(earthOrbit);
-    objects.push(earthOrbit);
-
-    const earthMaterial = new THREE.MeshPhongMaterial( { color: 0x2233FF, emissive: 0x112244});
-    const earthMesh = new THREE.Mesh( sphereGeometry, earthMaterial );
-    earthOrbit.add(earthMesh);
-    objects.push(earthMesh);
-
-    const moonOrbit = new THREE.Object3D();
-    moonOrbit.position.x = 2;
-    earthOrbit.add(moonOrbit);
-
-    const moonMaterial = new THREE.MeshPhongMaterial( {color: 0x888888, emissive: 0x222222} );
-    const moonMesh = new THREE.Mesh(sphereGeometry, moonMaterial);
-    moonMesh.scale.set(.5, .5, .5);
-    moonOrbit.add(moonMesh);
-    objects.push(moonMesh);
-
-
-    // Turns both axes and grid visible on/off
-    // lil-gui requires a property that returns a bool
-    // to decide to make a checkbox so we make a setter
-    // and getter for `visible` which we can tell lil-gui
-    // to look at.
-    class AxisGridHelper {
-        constructor(node, units = 10) {
-        const axes = new THREE.AxesHelper();
-        axes.material.depthTest = false;
-        axes.renderOrder = 2;  // after the grid
-        node.add(axes);
-    
-        const grid = new THREE.GridHelper(units, units);
-        grid.material.depthTest = false;
-        grid.renderOrder = 1;
-        node.add(grid);
-    
-        this.grid = grid;
-        this.axes = axes;
-        this.visible = false;
-        }
-        get visible() {
-        return this._visible;
-        }
-        set visible(v) {
-        this._visible = v;
-        this.grid.visible = v;
-        this.axes.visible = v;
-        }
-    }
-
-    function makeAxisGrid(node, label, units) {
-        const helper = new AxisGridHelper(node, units);
-        gui.add(helper, 'visible').name(label);
+    var obj = {
+        scale: 1
     }
     
-    makeAxisGrid(solarSystem, 'solarSystem', 25);
-    makeAxisGrid(sunMesh, 'sunMesh');
-    makeAxisGrid(earthOrbit, 'earthOrbit');
-    makeAxisGrid(earthMesh, 'earthMesh');
-    makeAxisGrid(moonOrbit, 'moonOrbit');
-    makeAxisGrid(moonMesh, 'moonMesh');
+    const cubeGeometry = new THREE.BoxGeometry(3, 3, 3, 5, 5, 5);
+    const cubeMaterial = new THREE.MeshPhongMaterial( {color: 0x00ff44, emissive: 0x004411} );
+    const cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    
+
+    gui.add(obj, 'scale', 0.1, 5, 0.1);
+
+    scene.add(cubeMesh);
+
+
 
 	function resizeRendererToDisplaySize( renderer ) {
 
@@ -140,13 +72,11 @@ function main() {
 
 		}
 
-		objects.forEach( ( obj ) => {
-
-			obj.rotation.y = time;
-
-		} );
-
+        cubeMesh.scale.set(obj.scale, obj.scale, obj.scale);
 		renderer.render( scene, camera );
+
+        cubeMesh.rotateX(0.01);
+        cubeMesh.rotateZ(0.01);
 
 		requestAnimationFrame( render );
 

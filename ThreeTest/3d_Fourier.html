@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Bild als Funktion</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script type="module">
+      let showPhase=true;
+      let showSound=true;
+      let showSignale=true;
+      try{
+        var initVal=JSON.parse(decodeURI(window.location.hash.slice(1)));
+        if (typeof initVal != "undefined") {
+          if ('Phase' in initVal) showPhase = initVal.Phase;
+          if ('Sound' in initVal) showSound = initVal.Sound;
+          if ('Signale' in initVal) showSignale = initVal.Signale;
+        }
+      } catch (e) {
+        //console.log(e);
+      } 
+      
+			import * as THREE from './three/three.module.js';
+			import { OrbitControls } from './three/OrbitControls.js';
+			import { EventsControls } from './three/EventControls.js';
+			import { FontLoader } from './three/FontLoader.js';
+			import { TextGeometry } from './three/TextGeometry.js';
+      import { GUI } from './three/dat.gui.module.js';
+
+			let renderer, scene, camera;
+      
+      let dim =400;
+      let yScale=0.3;
+      let blockSize=10;
+      var toggleSound = false;
+      var source=null;
+      var audioCtx=null;
+    
+      class SinCurve {
+        constructor( scene,eventsControl,frequenzIndex = 1, amplitude = 1, phase = Math.PI/2 ) {
+          this.posY = dim-dim/2-frequenzIndex*dim/10;
+          this.phase = phase;
+          this.amplitude = amplitude;
+          this.frequenzIndex = frequenzIndex;
+          this.amplitudeDirection = true;
+          this.unselect();
+          this.draw();
+        }
+        
+        draw(){
+          scene.remove( this.meshAmplitude );
+          scene.remove( this.meshPhase );
+          scene.remove( this.meshSinus );
+          var path = new THREE.Curve();
+          path.getPoint = function (t) {
+            let tz=this.amplitude*Math.cos( 2 * Math.PI * this.frequenzIndex * t +this.phase);
+            return new THREE.Vector3((t-0.5)*dim, tz*dim*yScale , this.posY);
+          }.bind(this);
+          
+          const geometry = new THREE.TubeGeometry(path, 200, 2, 8, false );
+          this.meshAmplitude = new THREE.Mesh( new THREE.BoxGeometry(blockSize, dim*yScale*this.amplitude, blockSize), this.material2 );
+          this.meshAmplitude.geometry.translate(dim*0.5+0.2, dim*yScale*this.amplitude/2, this.posY+3);
+          this.meshAmplitude.update=this.update.bind(this);
+          this.meshAmplitude.select=this.select.bind(this);
+          this.meshAmplitude.unselect=this.unselect.bind(this);
+          this.meshAmplitude.type=0;
+          eventsControl.attach( this.meshAmplitude );
+          scene.add( this.meshAmplitude );
+          if(showPhase){
+            this.meshPhase = new THREE.Mesh( new THREE.BoxGeometry(blockSize, dim*yScale*this.phase, blockSize), this.material2 );
+            this.meshPhase.geometry.translate(dim*0.5+0.2, -dim*yScale*this.phase/2, this.posY-3);
+            this.meshPhase.scale.set(1,1/(2*Math.PI),1);
+            this.meshPhase.update=this.update.bind(this);
+            this.meshPhase.select=this.select.bind(this);
+            this.meshPhase.unselect=this.unselect.bind(this);
+            this.meshPhase.type=1;
+            eventsControl.attach( this.meshPhase );
+            scene.add( this.meshPhase );
+          }
+          this.meshSinus=new THREE.Mesh( geometry, this.material );
+          scene.add( this.meshSinus );
+        }
+        
+        set(amplitude,phase){
+          this.phase = phase;
+          this.amplitude = amplitude;
+          this.draw();
+        }
+
+        select(){
+          this.material = new THREE.MeshBasicMaterial( { color: 0x44ffff } );
+          this.material2 = new THREE.MeshBasicMaterial( { color: 0x4477ff } );
+          this.draw();
+        }
+        
+        unselect(){
+          this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+          this.material2 = new THREE.MeshBasicMaterial( { color: 0x007700 } );
+          this.draw();
+        }
+                
+        update(buttons,focus){
+          var step;
+          if(buttons==1) step=0.01; else step=-0.01;
+          if(focus.type==0){
+            if(this.amplitudeDirection) step=-step;
+            this.amplitude=this.amplitude+step*2;
+            if(this.amplitude>1) {
+              this.amplitude=1;
+              this.amplitudeDirection=!this.amplitudeDirection;
+            }
+            else if(this.amplitude<0) {
+              this.amplitude=0;
+              this.amplitudeDirection=!this.amplitudeDirection;
+            }
+          }
+          else {
+            this.phase=this.phase+step*5;
+            if(this.phase>2*Math.PI) this.phase=0;
+            else if(this.amplitude<0) this.amplitude=2*Math.PI;
+          }
+          this.draw();
+          this.parent.update();
+        }
+      }        
+
+      class SumCurve{
+        constructor(scene,color,frequenzIndex = 0, array = [] ) {       
+          this.array = array;
+          this.posY = dim-dim/2-frequenzIndex*dim/10;
+
+          this.array.forEach(element => {element.parent=this;});
+
+          this.material = new THREE.MeshBasicMaterial( { color: color } );
+          this.update();
+        }      
+        
+        update(){
+          scene.remove(this.mesh);
+          var path = new THREE.Curve();
+          path.getPoint = function (t) {
+            let tz = 0;
+            this.array.forEach(element => {
+              tz+=element.amplitude* Math.cos( 2 * Math.PI * element.frequenzIndex * t +element.phase);
+            });
+            return new THREE.Vector3((t-0.5)*dim, tz*dim*yScale , this.posY);
+          }.bind(this);
+
+          if(toggleSound){           
+            let count=16000
+            if(audioCtx!=null) audioCtx.close();   
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            var buf = audioCtx.createBuffer(1, count, count);
+            var buffering = buf.getChannelData(0);
+            for (var i = 0; i < count; i++){
+              let t=i/count*400;
+              let tz = 0;
+              this.array.forEach(element => {
+                tz+=element.amplitude* Math.cos( 2 * Math.PI * element.frequenzIndex * t +element.phase);
+              });
+              buffering[i] = parseFloat(tz);
+            }
+            var max = Math.max(...buffering);
+            buffering = buffering.map(v => v / max);
+            source = audioCtx.createBufferSource();
+            source.buffer = buf;
+            source.connect(audioCtx.destination);
+            source.loop = true;
+            source.start();
+          } else {
+            if(audioCtx!=null) audioCtx.close(); 
+            audioCtx=null;
+          }
+
+          const geometry = new THREE.TubeGeometry(path, 500, 2, 8, false );
+          this.mesh = new THREE.Mesh( geometry, this.material );
+          scene.add( this.mesh );    
+
+          
+        }
+      }
+
+      var eventsControl;      
+      init();
+      animate();
+      
+			function init() {
+				const container = document.getElementById( 'container' );
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xffffff );
+				camera = new THREE.PerspectiveCamera( 5, window.innerWidth / window.innerHeight, 10, 15000 );
+				camera.position.set( 3500, 2500, 3000 );
+
+				const group = new THREE.Group();
+				scene.add( group );
+
+				const helper = new THREE.GridHelper( dim, 10 );
+				helper.rotation.x = 0;//Math.PI / 2;
+				group.add( helper );
+        
+        
+        var loader = new THREE.FontLoader();
+        loader.load( './three/helvetiker_regular.typeface.json', function ( font ) {
+          var textGeo = new THREE.TextGeometry( "Zeitbereich", {
+              font: font, size: 20, height: 1,curveSegments: 12,
+              bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: true
+          });
+          textGeo.computeBoundingBox();
+          var textMaterial = new THREE.MeshPhongMaterial( { color: 0x880000, specular: 0x880000 } );
+          var mesh = new THREE.Mesh( textGeo, textMaterial );
+          mesh.position.set(-textGeo.boundingBox.max.x/2,-textGeo.boundingBox.max.y*2,dim/2-4);
+          scene.add( mesh );
+          var textGeo2 = new THREE.TextGeometry( "Frequenzraum", {
+              font: font, size: 20, height: 1,curveSegments: 12,
+              bevelThickness: 0.1, bevelSize: 0.1, bevelEnabled: true
+          });
+          textGeo2.rotateY(Math.PI/2);
+          textGeo2.computeBoundingBox();
+          var mesh2 = new THREE.Mesh( textGeo2, textMaterial );
+          mesh2.position.set(dim/2-4,-textGeo2.boundingBox.max.y*2,textGeo.boundingBox.max.x/2);
+          scene.add( mesh2 );
+        });        
+        
+        
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				//renderer.setPixelRatio( window.devicePixelRatio );
+        
+				onWindowResize();
+				container.appendChild( renderer.domElement );
+
+        eventsControl = new EventsControls( camera, renderer.domElement );
+
+        let all=[];
+        for(let i=1;i<=10;i++){
+          all.push(new SinCurve( scene,eventsControl,i,1/i ));
+        }
+        let sum=new SumCurve(scene,0xff0000, 0,all );
+
+
+				eventsControl.attachEvent( 'mouseOver', function () {
+					this.container.style.cursor = 'pointer';
+					this.mouseOvered.select();
+				});
+        
+				eventsControl.attachEvent( 'mouseOut', function () {
+					this.container.style.cursor = 'auto';
+					this.mouseOvered.unselect();
+				});
+
+				eventsControl.attachEvent( 'onclick', function () {
+          //controls.enabled = false;
+					this.container.style.cursor = 'move';
+          
+          
+				});
+        
+        
+        eventsControl.attachEvent( 'changedTouches', function () {
+				});
+        
+
+				eventsControl.attachEvent( 'mouseDown', function () {
+          controls.enabled = false;
+				});
+
+				eventsControl.attachEvent( 'mouseUp', function () {
+          controls.enabled = true;
+					this.container.style.cursor = 'pointer';
+				});
+
+				eventsControl.attachEvent( 'mouseMove', function () {
+
+          if (this.focused!=null) {
+            this.focused.update(this.event.buttons,this.focused);
+          }
+				});
+
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.minDistance = 100;
+				controls.maxDistance = 8000;
+    
+        const gui = new GUI();
+        const params = {
+          Rampe: function(){   
+            all.forEach((element,i)=> {element.set(1/(i+1),Math.PI/2);});
+            sum.update();
+          }.bind(this),
+          Reset: function(){
+            if(showPhase)
+              all.forEach(element => {element.set(0,0);});
+            else
+              all.forEach(element => {element.set(0,Math.PI/2);});
+            sum.update();
+          }.bind(this),
+          Schwebung1: function(){   
+            all.forEach(element => {element.set(0,0);});
+            all[5].set(1,Math.PI);
+            all[8].set(1,Math.PI);
+            sum.update();
+          }.bind(this),        
+          Schwebung2: function(){   
+            all.forEach(element => {element.set(0,0);});
+            all[7].set(1,Math.PI);
+            all[9].set(1,Math.PI);
+            sum.update();
+          }.bind(this),        
+          Schwebung3: function(){   
+            all.forEach(element => {element.set(0,0);});
+            all[8].set(1,Math.PI);
+            all[9].set(1,Math.PI);
+            sum.update();
+          }.bind(this),
+          Sound: toggleSound,
+          Zeitbereich: function(){   
+            controls.object.position.setFromSphericalCoords(controls.getDistance(),Math.PI/2,0); 
+            controls.update();            
+          }.bind(this),
+          Frequenzraum: function(){   
+            controls.object.position.setFromSphericalCoords(controls.getDistance(),Math.PI/2-0.01,Math.PI/2);        
+            controls.update();            
+          }.bind(this)
+        };
+        
+        const gui1 = gui.addFolder('Darstellungen');      
+        gui1.add( params, 'Zeitbereich').onChange( render );
+        gui1.add( params, 'Frequenzraum').onChange( render );
+				gui1.open();
+        if(showSignale){
+          const gui2 = gui.addFolder('Signale');              
+          gui2.add( params, 'Rampe').onChange( render );
+          gui2.add( params, 'Schwebung1').onChange( render );
+          gui2.add( params, 'Schwebung2').onChange( render );
+          gui2.add( params, 'Schwebung3').onChange( render );
+        }
+        gui.add( params, 'Reset').onChange( render );
+        if(showSound) gui.add( params, 'Sound').onChange( toogleSoundChanged );
+        gui.width=200;
+        
+				window.addEventListener( 'resize', onWindowResize );
+
+        function toogleSoundChanged(value){
+         toggleSound=value;
+         sum.update();
+        }
+			}
+
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth*0.95, window.innerHeight*0.95 );
+
+			}
+      
+      function resizeCanvasToDisplaySize() {
+
+        var width = renderer.clientWidth;
+        var height = renderer.clientHeight;
+        if (renderer.width != width ||
+            renderer.height != height) {
+           renderer.width = width;
+           renderer.height = height;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+           renderer.setSize( width, height );
+        }
+      }
+
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+        //console.log(camera);
+				render();
+			}
+
+			function render() {
+        resizeCanvasToDisplaySize();      
+        eventsControl.update();
+				renderer.render( scene, camera );
+			}
+
+		</script>
+
+	</body>
+</html>

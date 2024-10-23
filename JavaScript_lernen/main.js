@@ -32,8 +32,8 @@ function main() {
 	const objects = [];
 
 	const radius = 1;
-	const widthSegments = 6;
-	const heightSegments = 6;
+	const widthSegments = 100;
+	const heightSegments = 100;
 	const sphereGeometry = new THREE.SphereGeometry(
 		radius, widthSegments, heightSegments 
     );
