@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js css3d - molecules</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
 		<style>
-			body {
-				background-color: #050505;
-				background: radial-gradient(ellipse at center,  rgba(43,45,48,1) 0%,rgba(0,0,0,1) 100%);
+			html, body {
+				margin: 0;
+				height: 100%;
 			}
-			.bond {
-				width: 5px;
-				height: 10px;
-				background: #eee;
+			#c {
+				width: 100%;
+				height: 100%;
 				display: block;
 			}
 		</style>
+		<canvas id="c"></canvas>
 	</head>
 	<body>
-        <div id="container"></div>
-		<div id="info"><a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> css3d - molecules</div>
-
+		
 		<script type="importmap">
 			{
 				"imports": {
@@ -30,6 +24,6 @@
 				}
 			}
 		</script>
-		<script type="module" src="test.js"></script>
+		<script type="module" src="main.js"></script>
 	</body>
 </html>
