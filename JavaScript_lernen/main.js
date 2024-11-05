@@ -1,159 +1,371 @@
+import * as MathBox from 'mathbox';
 import * as THREE from 'three';
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 
+mathbox = MathBox.mathBox({
+    plugins: ["core", "controls", "cursor"],
+    controls: {
+      klass: THREE.OrbitControls,
+    },
+  });
+  //three = mathbox.three;
 
-function main() {
+  three.camera.position.set(2.3, 1, 2);
+  three.controls.maxDistance = 5;
+  three.renderer.setClearColor(new THREE.Color(0xfafaf8), 1.0);
 
-	const canvas = document.querySelector( '#c' );
-	const renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
-    const gui = new GUI;
+  var view = mathbox.cartesian({
+    range: [
+      [0, 2],
+      [0, 1],
+      [0, 1],
+    ],
+    scale: [2, 1, 1],
+  });
 
-	const fov = 40;
-	const aspect = 2; // the canvas default
-	const near = 0.1;
-	const far = 1000;
-	const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-	camera.position.set( 0, 50, 0 );
-	camera.up.set( 0, 0, 1 );
-	camera.lookAt( 0, 0, 0 );
+  var dataMaximums = [7.9, 4.4, 6.9, 2.5];
+  var dataMinimums = [4.3, 2, 1, 0.1];
+  var dataRanges = [0, 1, 2, 3].map(function (i) {
+    return dataMaximums[i] - dataMinimums[i];
+  });
+  var dataScaledMinimums = [0, 1, 2, 3].map(function (i) {
+    return dataMinimums[i] / dataRanges[i];
+  });
 
-	const scene = new THREE.Scene();
+  var colors = {
+    x: 0xff4136, // red
+    y: 0xffdc00, // yellow
+    z: 0x0074d9, // blue
+    xy: 0xff851b, // orange
+    xz: 0xb10dc9, // purple
+    yz: 0x2ecc40, // green
+    xyz: 0x654321, // brown
+  };
 
-	{
-
-		const color = 0xFFFFFF;
-		const intensity = 500;
-		const light = new THREE.PointLight( color, intensity );
-		scene.add( light );
-
-	}
-
-	// an array of objects who's rotation to update
-	const objects = [];
-
-	const radius = 1;
-	const widthSegments = 100;
-	const heightSegments = 100;
-	const sphereGeometry = new THREE.SphereGeometry(
-		radius, widthSegments, heightSegments 
-    );
-
-    const solarSystem = new THREE.Object3D();
-    scene.add(solarSystem);
-    objects.push(solarSystem);
-
-	const sunMaterial = new THREE.MeshPhongMaterial( { emissive: 0xFFFF00 } );
-	const sunMesh = new THREE.Mesh( sphereGeometry, sunMaterial );
-	sunMesh.scale.set( 5, 5, 5 );
-	solarSystem.add( sunMesh );
-	objects.push( sunMesh );
-
-    const earthOrbit = new THREE.Object3D();
-    earthOrbit.position.x = 10;
-    solarSystem.add(earthOrbit);
-    objects.push(earthOrbit);
-
-    const earthMaterial = new THREE.MeshPhongMaterial( { color: 0x2233FF, emissive: 0x112244});
-    const earthMesh = new THREE.Mesh( sphereGeometry, earthMaterial );
-    earthOrbit.add(earthMesh);
-    objects.push(earthMesh);
-
-    const moonOrbit = new THREE.Object3D();
-    moonOrbit.position.x = 2;
-    earthOrbit.add(moonOrbit);
-
-    const moonMaterial = new THREE.MeshPhongMaterial( {color: 0x888888, emissive: 0x222222} );
-    const moonMesh = new THREE.Mesh(sphereGeometry, moonMaterial);
-    moonMesh.scale.set(.5, .5, .5);
-    moonOrbit.add(moonMesh);
-    objects.push(moonMesh);
-
-
-    // Turns both axes and grid visible on/off
-    // lil-gui requires a property that returns a bool
-    // to decide to make a checkbox so we make a setter
-    // and getter for `visible` which we can tell lil-gui
-    // to look at.
-    class AxisGridHelper {
-        constructor(node, units = 10) {
-        const axes = new THREE.AxesHelper();
-        axes.material.depthTest = false;
-        axes.renderOrder = 2;  // after the grid
-        node.add(axes);
-    
-        const grid = new THREE.GridHelper(units, units);
-        grid.material.depthTest = false;
-        grid.renderOrder = 1;
-        node.add(grid);
-    
-        this.grid = grid;
-        this.axes = axes;
-        this.visible = false;
-        }
-        get visible() {
-        return this._visible;
-        }
-        set visible(v) {
-        this._visible = v;
-        this.grid.visible = v;
-        this.axes.visible = v;
-        }
+  function interpolate(lo, hi, n) {
+    n--; // go to end of range
+    var vals = [];
+    for (var i = 0; i <= n; i++) {
+      vals.push(Math.round(10 * (lo + (hi - lo) * (i / n))) / 10);
     }
+    return vals;
+  }
 
-    function makeAxisGrid(node, label, units) {
-        const helper = new AxisGridHelper(node, units);
-        gui.add(helper, 'visible').name(label);
-    }
-    
-    makeAxisGrid(solarSystem, 'solarSystem', 25);
-    makeAxisGrid(sunMesh, 'sunMesh');
-    makeAxisGrid(earthOrbit, 'earthOrbit');
-    makeAxisGrid(earthMesh, 'earthMesh');
-    makeAxisGrid(moonOrbit, 'moonOrbit');
-    makeAxisGrid(moonMesh, 'moonMesh');
+  view
+    .scale({
+      divide: 5,
+      origin: [0, 0, 1, 0],
+      axis: "x",
+    })
+    .text({
+      live: false,
+      data: interpolate(dataMinimums[0], dataMaximums[0], 5),
+    })
+    .label({
+      color: colors.x,
+    });
 
-	function resizeRendererToDisplaySize( renderer ) {
+  view
+    .scale({
+      divide: 3,
+      origin: [0, 0, 1, 0],
+      axis: "y",
+    })
+    .text({
+      live: false,
+      data: interpolate(dataMinimums[1], dataMaximums[1], 3),
+    })
+    .label({
+      color: colors.y,
+      offset: [-16, 0],
+    });
 
-		const canvas = renderer.domElement;
-		const width = canvas.clientWidth;
-		const height = canvas.clientHeight;
-		const needResize = canvas.width !== width || canvas.height !== height;
-		if ( needResize ) {
+  view
+    .scale({
+      divide: 3,
+      origin: [2, 0, 0, 0],
+      axis: "z",
+    })
+    .text({
+      live: false,
+      data: interpolate(dataMinimums[2], dataMaximums[2], 3),
+    })
+    .label({
+      color: colors.z,
+      offset: [16, 0],
+    });
 
-			renderer.setSize( width, height, false );
+  view
+    .grid({
+      axes: "xy",
+      divideX: 3,
+      divideY: 3,
+    })
+    .grid({
+      axes: "xz",
+      divideX: 3,
+      divideY: 3,
+    })
+    .grid({
+      axes: "yz",
+      divideX: 3,
+      divideY: 3,
+    });
 
-		}
+  view
+    .array({
+      items: 1,
+      channels: 4,
+      live: false,
+      id: "data",
+      // data: is set below
+    })
+    .swizzle({
+      order: "xyz",
+    })
+    .transform({
+      scale: dataRanges.slice(0, 3).map(function (d, i) {
+        return i ? 1 / d : 2 / d;
+      }),
+      position: dataScaledMinimums.slice(0, 3).map(function (d, i) {
+        return i ? -d : -2 * d;
+      }),
+    })
+    .point({
+      color: 0x222222,
+      size: 12,
+    })
 
-		return needResize;
+    .transform({
+      scale: [1, 1, 0],
+      position: [0, 0, dataMinimums[2]],
+    })
+    .point({
+      color: colors.xy,
+      size: 7,
+    })
+    .end()
 
-	}
+    .transform({
+      scale: [1, 0, 1],
+      position: [0, dataMinimums[1], 0],
+    })
+    .point({
+      color: colors.xz,
+      size: 7,
+    })
+    .end()
 
-	function render( time ) {
+    .transform({
+      scale: [0, 1, 1],
+      position: [dataMinimums[0], 0, 0],
+    })
+    .point({
+      color: colors.yz,
+      size: 7,
+    })
+    .end()
 
-		time *= 0.001;
+    .transform({
+      position: [0, dataMaximums[1], dataMinimums[2]],
+      scale: [1, 0.001, 0],
+    })
+    .repeat({
+      items: 2,
+    })
+    .spread({
+      unit: "absolute",
+      alignItems: "first",
+      items: [0, 100, 0, 0],
+    })
+    .vector({
+      color: colors.x,
+    })
+    .end()
 
-		if ( resizeRendererToDisplaySize( renderer ) ) {
+    .transform({
+      position: [dataMaximums[0], 0, dataMinimums[2]],
+      scale: [0.001, 1, 0],
+    })
+    .repeat({
+      items: 2,
+    })
+    .spread({
+      unit: "absolute",
+      alignItems: "first",
+      items: [100, 0, 0, 0],
+    })
+    .vector({
+      color: colors.y,
+    })
+    .end()
 
-			const canvas = renderer.domElement;
-			camera.aspect = canvas.clientWidth / canvas.clientHeight;
-			camera.updateProjectionMatrix();
+    .transform({
+      position: [dataMinimums[0], dataMaximums[1], 0],
+      scale: [0, 0.001, 1],
+    })
+    .repeat({
+      items: 2,
+    })
+    .spread({
+      unit: "absolute",
+      alignItems: "first",
+      items: [0, 100, 0, 0],
+    })
+    .vector({
+      color: colors.z,
+    })
+    .end();
 
-		}
-
-		objects.forEach( ( obj ) => {
-
-			obj.rotation.y = time;
-
-		} );
-
-		renderer.render( scene, camera );
-
-		requestAnimationFrame( render );
-
-	}
-
-	requestAnimationFrame( render );
-
-}
-
-main();
+  view.select("#data").set("data", [
+    // http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
+    [5.1, 3.5, 1.4, 0.2],
+    [4.9, 3.0, 1.4, 0.2],
+    [4.7, 3.2, 1.3, 0.2],
+    [4.6, 3.1, 1.5, 0.2],
+    [5.0, 3.6, 1.4, 0.2],
+    [5.4, 3.9, 1.7, 0.4],
+    [4.6, 3.4, 1.4, 0.3],
+    [5.0, 3.4, 1.5, 0.2],
+    [4.4, 2.9, 1.4, 0.2],
+    [4.9, 3.1, 1.5, 0.1],
+    [5.4, 3.7, 1.5, 0.2],
+    [4.8, 3.4, 1.6, 0.2],
+    [4.8, 3.0, 1.4, 0.1],
+    [4.3, 3.0, 1.1, 0.1],
+    [5.8, 4.0, 1.2, 0.2],
+    [5.7, 4.4, 1.5, 0.4],
+    [5.4, 3.9, 1.3, 0.4],
+    [5.1, 3.5, 1.4, 0.3],
+    [5.7, 3.8, 1.7, 0.3],
+    [5.1, 3.8, 1.5, 0.3],
+    [5.4, 3.4, 1.7, 0.2],
+    [5.1, 3.7, 1.5, 0.4],
+    [4.6, 3.6, 1.0, 0.2],
+    [5.1, 3.3, 1.7, 0.5],
+    [4.8, 3.4, 1.9, 0.2],
+    [5.0, 3.0, 1.6, 0.2],
+    [5.0, 3.4, 1.6, 0.4],
+    [5.2, 3.5, 1.5, 0.2],
+    [5.2, 3.4, 1.4, 0.2],
+    [4.7, 3.2, 1.6, 0.2],
+    [4.8, 3.1, 1.6, 0.2],
+    [5.4, 3.4, 1.5, 0.4],
+    [5.2, 4.1, 1.5, 0.1],
+    [5.5, 4.2, 1.4, 0.2],
+    [4.9, 3.1, 1.5, 0.1],
+    [5.0, 3.2, 1.2, 0.2],
+    [5.5, 3.5, 1.3, 0.2],
+    [4.9, 3.1, 1.5, 0.1],
+    [4.4, 3.0, 1.3, 0.2],
+    [5.1, 3.4, 1.5, 0.2],
+    [5.0, 3.5, 1.3, 0.3],
+    [4.5, 2.3, 1.3, 0.3],
+    [4.4, 3.2, 1.3, 0.2],
+    [5.0, 3.5, 1.6, 0.6],
+    [5.1, 3.8, 1.9, 0.4],
+    [4.8, 3.0, 1.4, 0.3],
+    [5.1, 3.8, 1.6, 0.2],
+    [4.6, 3.2, 1.4, 0.2],
+    [5.3, 3.7, 1.5, 0.2],
+    [5.0, 3.3, 1.4, 0.2],
+    [7.0, 3.2, 4.7, 1.4],
+    [6.4, 3.2, 4.5, 1.5],
+    [6.9, 3.1, 4.9, 1.5],
+    [5.5, 2.3, 4.0, 1.3],
+    [6.5, 2.8, 4.6, 1.5],
+    [5.7, 2.8, 4.5, 1.3],
+    [6.3, 3.3, 4.7, 1.6],
+    [4.9, 2.4, 3.3, 1.0],
+    [6.6, 2.9, 4.6, 1.3],
+    [5.2, 2.7, 3.9, 1.4],
+    [5.0, 2.0, 3.5, 1.0],
+    [5.9, 3.0, 4.2, 1.5],
+    [6.0, 2.2, 4.0, 1.0],
+    [6.1, 2.9, 4.7, 1.4],
+    [5.6, 2.9, 3.6, 1.3],
+    [6.7, 3.1, 4.4, 1.4],
+    [5.6, 3.0, 4.5, 1.5],
+    [5.8, 2.7, 4.1, 1.0],
+    [6.2, 2.2, 4.5, 1.5],
+    [5.6, 2.5, 3.9, 1.1],
+    [5.9, 3.2, 4.8, 1.8],
+    [6.1, 2.8, 4.0, 1.3],
+    [6.3, 2.5, 4.9, 1.5],
+    [6.1, 2.8, 4.7, 1.2],
+    [6.4, 2.9, 4.3, 1.3],
+    [6.6, 3.0, 4.4, 1.4],
+    [6.8, 2.8, 4.8, 1.4],
+    [6.7, 3.0, 5.0, 1.7],
+    [6.0, 2.9, 4.5, 1.5],
+    [5.7, 2.6, 3.5, 1.0],
+    [5.5, 2.4, 3.8, 1.1],
+    [5.5, 2.4, 3.7, 1.0],
+    [5.8, 2.7, 3.9, 1.2],
+    [6.0, 2.7, 5.1, 1.6],
+    [5.4, 3.0, 4.5, 1.5],
+    [6.0, 3.4, 4.5, 1.6],
+    [6.7, 3.1, 4.7, 1.5],
+    [6.3, 2.3, 4.4, 1.3],
+    [5.6, 3.0, 4.1, 1.3],
+    [5.5, 2.5, 4.0, 1.3],
+    [5.5, 2.6, 4.4, 1.2],
+    [6.1, 3.0, 4.6, 1.4],
+    [5.8, 2.6, 4.0, 1.2],
+    [5.0, 2.3, 3.3, 1.0],
+    [5.6, 2.7, 4.2, 1.3],
+    [5.7, 3.0, 4.2, 1.2],
+    [5.7, 2.9, 4.2, 1.3],
+    [6.2, 2.9, 4.3, 1.3],
+    [5.1, 2.5, 3.0, 1.1],
+    [5.7, 2.8, 4.1, 1.3],
+    [6.3, 3.3, 6.0, 2.5],
+    [5.8, 2.7, 5.1, 1.9],
+    [7.1, 3.0, 5.9, 2.1],
+    [6.3, 2.9, 5.6, 1.8],
+    [6.5, 3.0, 5.8, 2.2],
+    [7.6, 3.0, 6.6, 2.1],
+    [4.9, 2.5, 4.5, 1.7],
+    [7.3, 2.9, 6.3, 1.8],
+    [6.7, 2.5, 5.8, 1.8],
+    [7.2, 3.6, 6.1, 2.5],
+    [6.5, 3.2, 5.1, 2.0],
+    [6.4, 2.7, 5.3, 1.9],
+    [6.8, 3.0, 5.5, 2.1],
+    [5.7, 2.5, 5.0, 2.0],
+    [5.8, 2.8, 5.1, 2.4],
+    [6.4, 3.2, 5.3, 2.3],
+    [6.5, 3.0, 5.5, 1.8],
+    [7.7, 3.8, 6.7, 2.2],
+    [7.7, 2.6, 6.9, 2.3],
+    [6.0, 2.2, 5.0, 1.5],
+    [6.9, 3.2, 5.7, 2.3],
+    [5.6, 2.8, 4.9, 2.0],
+    [7.7, 2.8, 6.7, 2.0],
+    [6.3, 2.7, 4.9, 1.8],
+    [6.7, 3.3, 5.7, 2.1],
+    [7.2, 3.2, 6.0, 1.8],
+    [6.2, 2.8, 4.8, 1.8],
+    [6.1, 3.0, 4.9, 1.8],
+    [6.4, 2.8, 5.6, 2.1],
+    [7.2, 3.0, 5.8, 1.6],
+    [7.4, 2.8, 6.1, 1.9],
+    [7.9, 3.8, 6.4, 2.0],
+    [6.4, 2.8, 5.6, 2.2],
+    [6.3, 2.8, 5.1, 1.5],
+    [6.1, 2.6, 5.6, 1.4],
+    [7.7, 3.0, 6.1, 2.3],
+    [6.3, 3.4, 5.6, 2.4],
+    [6.4, 3.1, 5.5, 1.8],
+    [6.0, 3.0, 4.8, 1.8],
+    [6.9, 3.1, 5.4, 2.1],
+    [6.7, 3.1, 5.6, 2.4],
+    [6.9, 3.1, 5.1, 2.3],
+    [5.8, 2.7, 5.1, 1.9],
+    [6.8, 3.2, 5.9, 2.3],
+    [6.7, 3.3, 5.7, 2.5],
+    [6.7, 3.0, 5.2, 2.3],
+    [6.3, 2.5, 5.0, 1.9],
+    [6.5, 3.0, 5.2, 2.0],
+    [6.2, 3.4, 5.4, 2.3],
+    [5.9, 3.0, 5.1, 1.8],
+  ]);
