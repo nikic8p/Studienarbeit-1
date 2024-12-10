@@ -1,371 +1,210 @@
-import * as MathBox from 'mathbox';
 import * as THREE from 'three';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import * as THREE_D from 'three_d';
 
-mathbox = MathBox.mathBox({
-    plugins: ["core", "controls", "cursor"],
-    controls: {
-      klass: THREE.OrbitControls,
-    },
-  });
-  //three = mathbox.three;
 
-  three.camera.position.set(2.3, 1, 2);
-  three.controls.maxDistance = 5;
-  three.renderer.setClearColor(new THREE.Color(0xfafaf8), 1.0);
 
-  var view = mathbox.cartesian({
-    range: [
-      [0, 2],
-      [0, 1],
-      [0, 1],
-    ],
-    scale: [2, 1, 1],
-  });
 
-  var dataMaximums = [7.9, 4.4, 6.9, 2.5];
-  var dataMinimums = [4.3, 2, 1, 0.1];
-  var dataRanges = [0, 1, 2, 3].map(function (i) {
-    return dataMaximums[i] - dataMinimums[i];
-  });
-  var dataScaledMinimums = [0, 1, 2, 3].map(function (i) {
-    return dataMinimums[i] / dataRanges[i];
-  });
+const canvas = document.querySelector( '#c' );
+const renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
+  const gui = new GUI;
 
-  var colors = {
-    x: 0xff4136, // red
-    y: 0xffdc00, // yellow
-    z: 0x0074d9, // blue
-    xy: 0xff851b, // orange
-    xz: 0xb10dc9, // purple
-    yz: 0x2ecc40, // green
-    xyz: 0x654321, // brown
+const fov = 40;
+const aspect = 2; // the canvas default
+const near = 0.1;
+const far = 1000;
+const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+camera.position.set( 20, -50, 10 );
+camera.up.set( 0, 0, 1 );
+camera.lookAt( 20, 0, 10 );
+const controls = new OrbitControls( camera, renderer.domElement );
+controls.update();
+
+const scene = new THREE.Scene();
+  
+
+{
+
+  const color = 0xFFFFFF;
+  const intensity = 500;
+  const light = new THREE.PointLight( color, intensity );
+      light.position.set(10,0,40);
+  scene.add( light );
+
+}
+
+
+var obj = {
+  x: 3,
+  y: 3
+};
+
+const axisMaterial = new THREE.LineBasicMaterial({color: 0x00ff44});
+
+const xPoints = [];
+xPoints.push(new THREE.Vector3(0, 0, 0));
+xPoints.push(new THREE.Vector3(40, 0, 0));
+
+const yPoints = [];
+yPoints.push(new THREE.Vector3(0, 0, 0));
+yPoints.push(new THREE.Vector3(0, 20, 0));
+
+const zPoints = [];
+zPoints.push(new THREE.Vector3(0, 0, 0));
+zPoints.push(new THREE.Vector3(0, 0, 20));
+
+const xGeometry = new THREE.BufferGeometry().setFromPoints(xPoints);
+const yGeometry = new THREE.BufferGeometry().setFromPoints(yPoints);
+const zGeometry = new THREE.BufferGeometry().setFromPoints(zPoints);
+
+const xAchse = new THREE.Line(xGeometry, axisMaterial);
+const yAchse = new THREE.Line(yGeometry, axisMaterial);
+const zAchse = new THREE.Line(zGeometry, axisMaterial);
+
+scene.add(xAchse);
+scene.add(yAchse);
+scene.add(zAchse);
+
+let x_mult = 40/(obj.x - 1);
+let y_mult = 20/(obj.y - 1);
+
+const geometry = new THREE.BufferGeometry();
+
+function makeRandomPlot(j) {
+  const randomPlot = [];
+
+  for (let i = 0; i < obj.x; i++ ) {
+    randomPlot.push(Math.floor(Math.random() * 19));
   };
+  return randomPlot;
 
-  function interpolate(lo, hi, n) {
-    n--; // go to end of range
-    var vals = [];
-    for (var i = 0; i <= n; i++) {
-      vals.push(Math.round(10 * (lo + (hi - lo) * (i / n))) / 10);
-    }
-    return vals;
+  // for (let i = 0; i < obj.x; i++ ) {
+  //   randomPlot.push(new THREE.Vector3(i * x_mult, j * y_mult, Math.floor(Math.random() * 19)));
+  // };
+  // return randomPlot;
+}
+
+
+
+
+const material = new THREE.MeshPhongMaterial( { 
+  color: 0x04f116, 
+  emissive: 0x000000, 
+  side: THREE.DoubleSide, 
+  wireframe: false, 
+  flatShading: true
+} );
+
+const mesh = new THREE.Mesh( geometry, material );
+scene.add(mesh);
+
+
+// var vertices = new Float32Array([]);
+// vertices.push = function()
+// {
+//   vertices = new Float32Array([...vertices, ...arguments]);
+// };
+// vertices.pop = function pop()
+// {
+//   vertices = vertices[ (obj.y - 1) * 18, end]
+// };
+
+function new_plot(){
+
+  x_mult = 40/(obj.x - 1);
+  y_mult = 20/(obj.y - 1);
+
+  var plot3d = [];
+
+  for (let i = 0; i<obj.y; i++) {
+
+    plot3d.push(makeRandomPlot(i));
   }
 
-  view
-    .scale({
-      divide: 5,
-      origin: [0, 0, 1, 0],
-      axis: "x",
-    })
-    .text({
-      live: false,
-      data: interpolate(dataMinimums[0], dataMaximums[0], 5),
-    })
-    .label({
-      color: colors.x,
-    });
+  var vertices = new Float32Array([]);
 
-  view
-    .scale({
-      divide: 3,
-      origin: [0, 0, 1, 0],
-      axis: "y",
-    })
-    .text({
-      live: false,
-      data: interpolate(dataMinimums[1], dataMaximums[1], 3),
-    })
-    .label({
-      color: colors.y,
-      offset: [-16, 0],
-    });
+  for (let j=0; j<plot3d.length-1; j++) {
+    for (let i = 0; i< plot3d[0].length - 1; i++){
+      vertices = new Float32Array([...vertices,
+        i * x_mult,       j * y_mult,       plot3d[j][i],
+        (i + 1) * x_mult, j * y_mult,       plot3d[j][i+1],
+        i * x_mult,       (j + 1) * y_mult, plot3d[j+1][i],
 
-  view
-    .scale({
-      divide: 3,
-      origin: [2, 0, 0, 0],
-      axis: "z",
-    })
-    .text({
-      live: false,
-      data: interpolate(dataMinimums[2], dataMaximums[2], 3),
-    })
-    .label({
-      color: colors.z,
-      offset: [16, 0],
-    });
+        i * x_mult,       (j + 1) * y_mult, plot3d[j+1][i],
+        (i + 1) * x_mult, j * y_mult,       plot3d[j][i+1],
+        (i + 1) * x_mult, (j + 1) * y_mult, plot3d[j+1][i+1]
+      ]);
+    };
+  }
 
-  view
-    .grid({
-      axes: "xy",
-      divideX: 3,
-      divideY: 3,
-    })
-    .grid({
-      axes: "xz",
-      divideX: 3,
-      divideY: 3,
-    })
-    .grid({
-      axes: "yz",
-      divideX: 3,
-      divideY: 3,
-    });
+  // plot3d[j][i],
+// plot3d[j][i+1],
+// plot3d[j+1][i],
+// plot3d[j+1][i],
+// plot3d[j][i+1],
+// plot3d[j+1][i+1]
 
-  view
-    .array({
-      items: 1,
-      channels: 4,
-      live: false,
-      id: "data",
-      // data: is set below
-    })
-    .swizzle({
-      order: "xyz",
-    })
-    .transform({
-      scale: dataRanges.slice(0, 3).map(function (d, i) {
-        return i ? 1 / d : 2 / d;
-      }),
-      position: dataScaledMinimums.slice(0, 3).map(function (d, i) {
-        return i ? -d : -2 * d;
-      }),
-    })
-    .point({
-      color: 0x222222,
-      size: 12,
-    })
+  mesh.geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 
-    .transform({
-      scale: [1, 1, 0],
-      position: [0, 0, dataMinimums[2]],
-    })
-    .point({
-      color: colors.xy,
-      size: 7,
-    })
-    .end()
 
-    .transform({
-      scale: [1, 0, 1],
-      position: [0, dataMinimums[1], 0],
-    })
-    .point({
-      color: colors.xz,
-      size: 7,
-    })
-    .end()
+}
 
-    .transform({
-      scale: [0, 1, 1],
-      position: [dataMinimums[0], 0, 0],
-    })
-    .point({
-      color: colors.yz,
-      size: 7,
-    })
-    .end()
+new_plot();
+gui.add(obj, 'x', 2, 50, 1)
+gui.add(obj, 'y', 2, 50, 1);
 
-    .transform({
-      position: [0, dataMaximums[1], dataMinimums[2]],
-      scale: [1, 0.001, 0],
-    })
-    .repeat({
-      items: 2,
-    })
-    .spread({
-      unit: "absolute",
-      alignItems: "first",
-      items: [0, 100, 0, 0],
-    })
-    .vector({
-      color: colors.x,
-    })
-    .end()
 
-    .transform({
-      position: [dataMaximums[0], 0, dataMinimums[2]],
-      scale: [0.001, 1, 0],
-    })
-    .repeat({
-      items: 2,
-    })
-    .spread({
-      unit: "absolute",
-      alignItems: "first",
-      items: [100, 0, 0, 0],
-    })
-    .vector({
-      color: colors.y,
-    })
-    .end()
 
-    .transform({
-      position: [dataMinimums[0], dataMaximums[1], 0],
-      scale: [0, 0.001, 1],
-    })
-    .repeat({
-      items: 2,
-    })
-    .spread({
-      unit: "absolute",
-      alignItems: "first",
-      items: [0, 100, 0, 0],
-    })
-    .vector({
-      color: colors.z,
-    })
-    .end();
 
-  view.select("#data").set("data", [
-    // http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
-    [5.1, 3.5, 1.4, 0.2],
-    [4.9, 3.0, 1.4, 0.2],
-    [4.7, 3.2, 1.3, 0.2],
-    [4.6, 3.1, 1.5, 0.2],
-    [5.0, 3.6, 1.4, 0.2],
-    [5.4, 3.9, 1.7, 0.4],
-    [4.6, 3.4, 1.4, 0.3],
-    [5.0, 3.4, 1.5, 0.2],
-    [4.4, 2.9, 1.4, 0.2],
-    [4.9, 3.1, 1.5, 0.1],
-    [5.4, 3.7, 1.5, 0.2],
-    [4.8, 3.4, 1.6, 0.2],
-    [4.8, 3.0, 1.4, 0.1],
-    [4.3, 3.0, 1.1, 0.1],
-    [5.8, 4.0, 1.2, 0.2],
-    [5.7, 4.4, 1.5, 0.4],
-    [5.4, 3.9, 1.3, 0.4],
-    [5.1, 3.5, 1.4, 0.3],
-    [5.7, 3.8, 1.7, 0.3],
-    [5.1, 3.8, 1.5, 0.3],
-    [5.4, 3.4, 1.7, 0.2],
-    [5.1, 3.7, 1.5, 0.4],
-    [4.6, 3.6, 1.0, 0.2],
-    [5.1, 3.3, 1.7, 0.5],
-    [4.8, 3.4, 1.9, 0.2],
-    [5.0, 3.0, 1.6, 0.2],
-    [5.0, 3.4, 1.6, 0.4],
-    [5.2, 3.5, 1.5, 0.2],
-    [5.2, 3.4, 1.4, 0.2],
-    [4.7, 3.2, 1.6, 0.2],
-    [4.8, 3.1, 1.6, 0.2],
-    [5.4, 3.4, 1.5, 0.4],
-    [5.2, 4.1, 1.5, 0.1],
-    [5.5, 4.2, 1.4, 0.2],
-    [4.9, 3.1, 1.5, 0.1],
-    [5.0, 3.2, 1.2, 0.2],
-    [5.5, 3.5, 1.3, 0.2],
-    [4.9, 3.1, 1.5, 0.1],
-    [4.4, 3.0, 1.3, 0.2],
-    [5.1, 3.4, 1.5, 0.2],
-    [5.0, 3.5, 1.3, 0.3],
-    [4.5, 2.3, 1.3, 0.3],
-    [4.4, 3.2, 1.3, 0.2],
-    [5.0, 3.5, 1.6, 0.6],
-    [5.1, 3.8, 1.9, 0.4],
-    [4.8, 3.0, 1.4, 0.3],
-    [5.1, 3.8, 1.6, 0.2],
-    [4.6, 3.2, 1.4, 0.2],
-    [5.3, 3.7, 1.5, 0.2],
-    [5.0, 3.3, 1.4, 0.2],
-    [7.0, 3.2, 4.7, 1.4],
-    [6.4, 3.2, 4.5, 1.5],
-    [6.9, 3.1, 4.9, 1.5],
-    [5.5, 2.3, 4.0, 1.3],
-    [6.5, 2.8, 4.6, 1.5],
-    [5.7, 2.8, 4.5, 1.3],
-    [6.3, 3.3, 4.7, 1.6],
-    [4.9, 2.4, 3.3, 1.0],
-    [6.6, 2.9, 4.6, 1.3],
-    [5.2, 2.7, 3.9, 1.4],
-    [5.0, 2.0, 3.5, 1.0],
-    [5.9, 3.0, 4.2, 1.5],
-    [6.0, 2.2, 4.0, 1.0],
-    [6.1, 2.9, 4.7, 1.4],
-    [5.6, 2.9, 3.6, 1.3],
-    [6.7, 3.1, 4.4, 1.4],
-    [5.6, 3.0, 4.5, 1.5],
-    [5.8, 2.7, 4.1, 1.0],
-    [6.2, 2.2, 4.5, 1.5],
-    [5.6, 2.5, 3.9, 1.1],
-    [5.9, 3.2, 4.8, 1.8],
-    [6.1, 2.8, 4.0, 1.3],
-    [6.3, 2.5, 4.9, 1.5],
-    [6.1, 2.8, 4.7, 1.2],
-    [6.4, 2.9, 4.3, 1.3],
-    [6.6, 3.0, 4.4, 1.4],
-    [6.8, 2.8, 4.8, 1.4],
-    [6.7, 3.0, 5.0, 1.7],
-    [6.0, 2.9, 4.5, 1.5],
-    [5.7, 2.6, 3.5, 1.0],
-    [5.5, 2.4, 3.8, 1.1],
-    [5.5, 2.4, 3.7, 1.0],
-    [5.8, 2.7, 3.9, 1.2],
-    [6.0, 2.7, 5.1, 1.6],
-    [5.4, 3.0, 4.5, 1.5],
-    [6.0, 3.4, 4.5, 1.6],
-    [6.7, 3.1, 4.7, 1.5],
-    [6.3, 2.3, 4.4, 1.3],
-    [5.6, 3.0, 4.1, 1.3],
-    [5.5, 2.5, 4.0, 1.3],
-    [5.5, 2.6, 4.4, 1.2],
-    [6.1, 3.0, 4.6, 1.4],
-    [5.8, 2.6, 4.0, 1.2],
-    [5.0, 2.3, 3.3, 1.0],
-    [5.6, 2.7, 4.2, 1.3],
-    [5.7, 3.0, 4.2, 1.2],
-    [5.7, 2.9, 4.2, 1.3],
-    [6.2, 2.9, 4.3, 1.3],
-    [5.1, 2.5, 3.0, 1.1],
-    [5.7, 2.8, 4.1, 1.3],
-    [6.3, 3.3, 6.0, 2.5],
-    [5.8, 2.7, 5.1, 1.9],
-    [7.1, 3.0, 5.9, 2.1],
-    [6.3, 2.9, 5.6, 1.8],
-    [6.5, 3.0, 5.8, 2.2],
-    [7.6, 3.0, 6.6, 2.1],
-    [4.9, 2.5, 4.5, 1.7],
-    [7.3, 2.9, 6.3, 1.8],
-    [6.7, 2.5, 5.8, 1.8],
-    [7.2, 3.6, 6.1, 2.5],
-    [6.5, 3.2, 5.1, 2.0],
-    [6.4, 2.7, 5.3, 1.9],
-    [6.8, 3.0, 5.5, 2.1],
-    [5.7, 2.5, 5.0, 2.0],
-    [5.8, 2.8, 5.1, 2.4],
-    [6.4, 3.2, 5.3, 2.3],
-    [6.5, 3.0, 5.5, 1.8],
-    [7.7, 3.8, 6.7, 2.2],
-    [7.7, 2.6, 6.9, 2.3],
-    [6.0, 2.2, 5.0, 1.5],
-    [6.9, 3.2, 5.7, 2.3],
-    [5.6, 2.8, 4.9, 2.0],
-    [7.7, 2.8, 6.7, 2.0],
-    [6.3, 2.7, 4.9, 1.8],
-    [6.7, 3.3, 5.7, 2.1],
-    [7.2, 3.2, 6.0, 1.8],
-    [6.2, 2.8, 4.8, 1.8],
-    [6.1, 3.0, 4.9, 1.8],
-    [6.4, 2.8, 5.6, 2.1],
-    [7.2, 3.0, 5.8, 1.6],
-    [7.4, 2.8, 6.1, 1.9],
-    [7.9, 3.8, 6.4, 2.0],
-    [6.4, 2.8, 5.6, 2.2],
-    [6.3, 2.8, 5.1, 1.5],
-    [6.1, 2.6, 5.6, 1.4],
-    [7.7, 3.0, 6.1, 2.3],
-    [6.3, 3.4, 5.6, 2.4],
-    [6.4, 3.1, 5.5, 1.8],
-    [6.0, 3.0, 4.8, 1.8],
-    [6.9, 3.1, 5.4, 2.1],
-    [6.7, 3.1, 5.6, 2.4],
-    [6.9, 3.1, 5.1, 2.3],
-    [5.8, 2.7, 5.1, 1.9],
-    [6.8, 3.2, 5.9, 2.3],
-    [6.7, 3.3, 5.7, 2.5],
-    [6.7, 3.0, 5.2, 2.3],
-    [6.3, 2.5, 5.0, 1.9],
-    [6.5, 3.0, 5.2, 2.0],
-    [6.2, 3.4, 5.4, 2.3],
-    [5.9, 3.0, 5.1, 1.8],
-  ]);
+
+function resizeRendererToDisplaySize( renderer ) {
+
+  const canvas = renderer.domElement;
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  const needResize = canvas.width !== width || canvas.height !== height;
+  if ( needResize ) {
+
+    renderer.setSize( width, height, false );
+
+  }
+
+  return needResize;
+
+}
+
+var old_obj = {
+  x : obj.x,
+  y : obj.y
+};
+
+function render( time ) {
+
+  time *= 0.001;
+
+
+  if ( resizeRendererToDisplaySize( renderer ) ) {
+
+    const canvas = renderer.domElement;
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+
+  }
+  
+  if (old_obj.x !== obj.x || old_obj.y !== obj.y) {
+    new_plot();
+  };
+
+  old_obj.x = obj.x;
+  old_obj.y = obj.y;
+  
+  controls.update();
+  renderer.render( scene, camera );
+
+  requestAnimationFrame( render );
+
+}
+
+requestAnimationFrame( render );
+

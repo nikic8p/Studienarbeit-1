@@ -1,0 +1,39 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>capture microphone audio into buffer</title>
+    
+<audio id="audioCapture"></audio>
+<script>
+    var audioCapture = (function ()
+    {
+        var init = function ()
+        {
+            initCapture();
+        };
+    
+        function initCapture()
+        {
+            var constraints = { audio: true, video: false };
+    
+            navigator.mediaDevices.getUserMedia(constraints).then(function (stream)
+            {
+                var audio = document.getElementById('audioCapture');
+                audio.srcObject = stream;
+                console.log();
+                audio.play();
+            }).catch(function (err)
+            {
+                console.log(err);
+            });
+        }
+    
+        return {
+            Init: init
+        }
+    })();
+    audioCapture.Init();
+</script>
+</head>
+<body>
+
+</body>
+</html>
