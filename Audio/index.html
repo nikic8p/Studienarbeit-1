@@ -18,8 +18,30 @@
             {
                 var audio = document.getElementById('audioCapture');
                 audio.srcObject = stream;
-                console.log();
+                var context = new AudioContext();
+                var srcObject = context.createMediaElementSource(audio);
+                var analyser = context.createAnalyser();
+
+                srcObject.connect(analyser);
+                analyser.connect(context.destination);
+
+                analyser.fftSize = 256;
+
+                var bufferLength = analyser.frequencyBinCount;
+
+                console.log(bufferLength);
+
+                var dataArray = new Uint8Array(bufferLength);
+                
+                audio.load();
                 audio.play();
+                function loop(){
+
+                    analyser.getByteFrequencyData(dataArray);
+    
+                    console.log(dataArray);
+                }
+                loop();
             }).catch(function (err)
             {
                 console.log(err);
