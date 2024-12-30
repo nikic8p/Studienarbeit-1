@@ -1,47 +1,3 @@
-//import * as FFT from 'fft';
-
-// var constraints = { audio: true, video: false };
-    
-// navigator.mediaDevices.getUserMedia(constraints).then(function (stream)
-// {
-//     var audio = document.getElementById('audioCapture');
-//     audio.srcObject = stream;
-//     // console.log(stream);
-//     audio.createAnalyser();
-
-// }).catch(function (err)
-// {
-//     console.log(err);
-// });
-
-
-// const f = new FFT.FFT(256);
-
-// let input = new Array(f.size);
-// //const x = Math.sin()
-// input.fill(0);
-
-// const out = f.createComplexArray();
-
-// function fillSine(arr, frequency){
-//     for (let i = 0; i<arr.length; i++){
-//         arr[i] = Math.cos(2 * Math.PI * frequency * i/25600);
-//     }
-//     return arr;
-// }
-// let frequency = 1;
-
-// function fourier(){
-    
-//     input = fillSine(input, frequency);
-    
-//     f.realTransform(out, input);
-    
-//     frequency += 100;
-
-//     return f.fromComplexArray(out);
-// }
-
 
 // Control Panel erstellen
 
@@ -49,16 +5,24 @@ let gui = new lil.GUI();
 
 var stop = false;
 var controls = {
-    random: function(){redraw()},
-    stop: function(){stop = true;}
+    mikrofon: function(){startMikrofon()},
+    sinus: function(){startSinus()},
+    frequenz: 1,
+    stop: function(){stop = true;},
+    clear: function(){clearPlot()}
 }
-gui.add(controls, 'random');
+gui.add(controls, 'mikrofon');
+gui.add(controls, 'sinus');
+gui.add(controls, 'frequenz', 0, 20000).onChange( value => {
+    sinus.setFrequency(value);
+});
 gui.add(controls, 'stop');
+gui.add(controls, 'clear');
 
 // Auswahl des DIV Elements in der HTML file
 // hier wird mit Plotly gezeichnet
 
-var TESTER = document.getElementById('tester');
+var DEMONSTRATOR = document.getElementById('demonstrator');
 
 // 2D Arrays für den Plot gefüllt mit 0
 
@@ -104,7 +68,9 @@ var layout = {
         xaxis: {
             title: {
                 text: 'Frequenz',
-            }
+            },
+            tickvals: [0, 53, 106, 159, 212],
+            ticktext: [0, 5000, 10000, 15000, 20000]
         },
         yaxis: {
             title: {
@@ -113,41 +79,65 @@ var layout = {
         },
     },
     autosize: true,
-    width: TESTER.clientWidth,
-    height: TESTER.clientHeight, 
+    width: DEMONSTRATOR.clientWidth,
+    height: DEMONSTRATOR.clientHeight, 
 };
 
 //Initiales Zeichnen des Plots
+Plotly.newPlot(DEMONSTRATOR, data, layout, defaultPlotlyConfiguration);
 
-Plotly.newPlot(TESTER, data, layout, defaultPlotlyConfiguration);
+
+// Erstellen der mikrofon Instanz
+const microphone = new Microphone();
+function startMikrofon(){
+    
+    redraw(microphone);
+
+}
+
+// Starte Sinus Generator
+const sinus = new SineGenerator(controls.frequenz);
+function startSinus(){
+
+    redraw(sinus);
+
+}
 
 
-const microphone = new Microphone()
 
-console.log(microphone);
-var samples;
-function redraw(){
-    samples = microphone.getSamples();
+var frequenzen;
 
-    for (let i = 0; i<samples.length; i++){
-        samples[i] = Math.abs(samples[i] - 128);
-    }
+function redraw(srcObject){
 
+
+    frequenzen = srcObject.getFrequencys();
 
     z_data = z_data.slice(1);
-    z_data.push(...[samples]);
+    z_data.push(...[frequenzen]);
 
     var update = {
         z: [z_data]
     }
 
-    Plotly.update(TESTER, update, 0);
+    Plotly.update(DEMONSTRATOR, update, 0);
     
     setTimeout(function() {
         if (stop === true) {
             stop = false;
             return;
         }
-        redraw();
-      }, 20);
+        redraw(srcObject);
+      }, 10);
+}
+
+
+
+
+function clearPlot(){
+    z_data = new Array(200).fill(0).map(()=>new Array(256).fill(0));
+    var update = {
+        z: [z_data]
+    }
+
+    Plotly.update(DEMONSTRATOR, update, 0);
 }

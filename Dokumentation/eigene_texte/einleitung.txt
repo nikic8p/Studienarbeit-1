@@ -1,0 +1,94 @@
+1 Einleitung:
+
+Dieses Kapitel unterteilt sich in 5 Unterkapitel, in welchen die Wichtigkeit des Projektes anhand der Aufgaben- und Zielstellung, sowie der Einführung in das Projekt beschrieben wird. Zudem wird hier der Stand der Technik und der Aufbau der Arbeit im Gesamten behandelt.
+
+
+
+1.1 Einführung in das Projekt
+
+Das Projekt "titel hier einfügen" befasst sich mit der Endwicklung eines Demonstrators für die diskrete Fourier-Transformation in der Programmiersprache JavaScript. 
+
+
+
+
+1.2 Aufgabenstellung
+
+Der Demonstrator ist in der Programmiersprache JavaScript zu entwickeln. Dies hat den Zweck, dass es sich um eine WebAnwendung handelt, welche leicht mit jedem Browser verwendet werden kann. Zum demonstrieren der diskreten Fourier-Transformation ist die Möglichkeit eines Mikrofon-Input, als die möglichkeit eines Sinussignaks mit veränderlicher Frequenz zu implementieren. Mit dem Sinussignal wird die Funktionabilität des Demonstrators überprüft und vorgeführt. Der Mikrofoninput wird verwendet um die genauigkeit des Demonstrators zu aufzuzeigen. Der Schematische Aufbau des Programms wird in der folgenden Abbildung aufgeführt. Hier ist zu sehen, dass zwischen den Signaleingängen "Mikrofon" und "Sinus" gewählt erden kann. Das resultierende Signal wird daraufhin mit Hilfe einer Bibliothek für Disktreten Forier-Transformation in Zeit und Wert dikretisiert und daraufhin transformiert. Daraus resultiert dann das Zeitliche Signal in spektraler auflösung. Dieses wird dann grafisch in einem 3-Dimensionalen Plot dargestellt mit einer Achse jeweils für Amplitude, Zeit und Frequenz. Als Vorbild für die grafische Darstellung dient die folgende Abbildung. Diese zeigt den grafischen Output eines 3-dimensionalen Frequenzanalyse. Solch eine Analyse ist besonders für Audio-Signake sinnvoll.
+
+
+
+1.3 Ziele der Arbeit
+
+Ziel dieser Arbeit ist die entwicklung einer 3-dimensionalen Frequenzanalyse für Audio-Signale, sowie eines Frequenzgenerators mit variabler Frequenz. Dieser Demonstrator ist in mindestens zwei verscheidenen Browsern auf Funktion zu testen.
+
+
+1.4 Stand der Technik
+
+In diesem Unterkapitel wird der Stand der Technik aufbereitet. Rlevant für dieses Projekt sind hier vorrangig die auswahl der 3D-Visualisierungsbibliothek und die auswahl der Bibliothek für FFT und Audio-Input.
+
+    1.4.1 Bibliothek für 3D-Visualisierungsbibliothek
+
+    Für die Visualisierung der Daten in einem 3-dimensionalen Plot stehen einige verschiedene Bibliotheken für JavaScript zur verfügung. Eine Auswahl dieser sind 
+    Three.JS
+    d3.JS
+    Plotly.js
+
+    Three.js:
+    Three.js ist eine Bibliothek, mit welcher einfach 3D Animationen in JavaScript erstellt und angezeigt werden können. Hier kann mit dem nötigen Aufwand alles genau so dargestellt werden, wie man es möchte.
+
+
+
+    d3.js:
+    Diese Bibliothek ist eine mächtige low level Bibliothek für die Visualisierung von Daten. d3 steht hier für "Data Driven Documents". Mit dieser Bibliothek lassen sich 2D, sowie 3D plots von Daten erstellen. Heir jedoch mit, im Vergleich zu Three.js, hohen Aufwand.
+
+
+    Plotly.js:
+    Diese Bibliothek steht für verschiedene Programmiersprachen zur verfügung und konzentriert sich nur auf das Anzeigen und Animieren von Plots im speziellen. Der Fokus bei dieser Bibliothek liegt also nicht auf das Abdecken von möglichst vielen Anwendungsfällen, sondern daruf, Plots mit möglichst wenig Aufwand und in kurzer Zeit darstellen zu können.
+
+
+    Für dieses Projekt ist letztendlich Plotly.js für die Visulaisierung der Daten gewählt worden. Diese Entscheidung ist auf den einfachen Aufbau und die Einfache Bedienung zurückzuführen.
+
+
+    1.4.2 FFT Bibliotheken
+
+    Um das Audiosignal im Spektrum betrachten zu können wird eine Fast Fourier Transformation (FFT) durchgeführt. Dies kann nach verschiedenen Algorithmen geschehen. Solche Algorithmen sind häufig in verschiedenen Bibliotheken eingebunden und können somit leicht verwendet werden.
+
+    FFt.js
+
+
+    KissFFT
+
+
+    Web Audio APIs MediaDevices
+    Diese Bibliothek beinhaltet neben einer Audio eingabe zusätzlich auch die möglichkeit einer Frequenzanalyse des Audio Inputs. Hier ist jedoch darauf zu achten, dass diese Web API nur funktioniert, wenn auf den Web Server, auf dem das JavaScript-Programm läuft, mit "https" zugegriffen wird. Diese Bibliothek nutzt hier den Algorithmus
+
+
+    1.4.3 Bibliothek für den Audio Input
+
+    Um die eingabe des Mikrofons zu ermöglichen muss diese implementiert werden. Hierfür kann mit einer Bibliothek gearbeitet werden oder die oben genannte Web Audio API verwendet werden. In dieser Arbeit wird auf die Verwendung einer zusätzlichen Bibliothek verzichtet, da eine solche Bibliothek wie z.B. Microphone.js nur eine leicht einfachere Verwendung der Web Audio API darstellt. Da jedoch die Signalverarbietung mittels FFT über die Web Audio API leichter ist zu implementiern, wenn auch dessen eigener AudioInput genutz wird, wird desshalb darauf zurückgegriffen. Zudem ist mit der Web Audio API Browserübergreifen die Funktionalität sichergestellt.
+
+
+
+
+
+1.5 Aufbau der Arbeit
+
+
+Diese Studienarbeit unterteilt sich in 4 Hauptkapitel:
+
+Einleitung
+Technische Grundlagen
+Hauptteil
+Zusammenfassung und Ausblick
+
+
+In der Einleitung wird ein kurzer Abriss des Projektes in Form der Aufgabenstellung und Zeilsetzung gegeben. Zudem wird hier auch der Stand der Technik behandelt.
+
+In den Technischen Grundlagen wird die FFT bzw. die DFT , sowie die Programmirsprache JavaScript und dessen wichtigkeit für WebAnwendung behandelt.
+
+Im Hauptteil wird auf das eigentliche Programmeirprojekt eingegangen. Hier werden die Meilensteine, sowie die Sackgassen des Projekts aufgeführt und das endprodukt detailiert beschrieben.
+
+Die Zusammenfassung und der Ausblick geben einen kurzen Abriss des Projekts, sowie weitere Möglichkeiten, wie das resultat in Beispielsweise einem Folgeprojekt weiter verbessert werden kann.
+
+
+
