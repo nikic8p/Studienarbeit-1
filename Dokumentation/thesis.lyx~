@@ -1,0 +1,4202 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrreprt
+\begin_preamble
+\renewcommand{\maketitle}{}
+\usepackage{lmodern}
+
+% Correct superscripts 
+\usepackage{fnpct}
+
+
+\usepackage{calc} % Used for extra space below footsepline
+
+
+
+% Uncomment the next line for IEEE-style 
+% \usepackage[backend=biber, autocite=inline, style=ieee]{biblatex} 	% Use IEEE-Style (e.g. [1])
+
+% Uncomment the next line for alphabetic style 
+% \usepackage[backend=biber, autocite=inline, style=alphabetic]{biblatex} 	% Use alphabetic style (e.g. [TGK12])
+
+% Uncomment the next two lines vor Harvard-Style 
+%\usepackage[backend=biber, style=apa]{biblatex} 	
+%\DeclareLanguageMapping{german}{german-apa}
+
+
+
+
+%%% Uncomment the following lines to support hard URL breaks in bibliography 
+%\apptocmd{\UrlBreaks}{\do\f\do\m}{}{}
+%\setcounter{biburllcpenalty}{9000}% Kleinbuchstaben
+%\setcounter{biburlucpenalty}{9000}% Großbuchstaben
+
+
+
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+\makeatletter
+\usepackage[printonlyused]{acronym}
+\@ifpackagelater{acronym}{2015/03/20}
+  {%
+    \renewcommand*{\aclabelfont}[1]{\textbf{\textsf{\acsfont{#1}}}}
+  }%
+  {%
+  }%
+\makeatother
+
+%		LISTINGS
+\usepackage{listings}	%Format Listings properly
+\renewcommand{\lstlistingname}{Quelltext} 
+\renewcommand{\lstlistlistingname}{Quelltextverzeichnis}
+\lstset{numbers=left,
+	numberstyle=\tiny,
+	captionpos=b,
+	basicstyle=\ttfamily\small}
+
+\usepackage{lipsum}    %Blindtext
+\usepackage{graphicx} % use various graphics formats
+\usepackage{xcolor}
+\usepackage[german]{varioref} 	% nicer references \vref
+\usepackage{caption}	%better Captions
+\usepackage{booktabs} %nicer Tabs
+\usepackage{array}
+%\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+
+%		ALGORITHMS
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\listalgorithmname}{Algorithmenverzeichnis }
+\floatname{algorithm}{Algorithmus}
+
+
+
+
+%\RequirePackage[automark,headsepline,footsepline]{scrpage2}
+\RequirePackage[automark]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+%\renewcommand*{\pnumfont}{\upshape\sffamily}
+%\renewcommand*{\headfont}{\upshape\sffamily}
+%\renewcommand*{\footfont}{\upshape\sffamily}
+\renewcommand{\chaptermarkformat}{}
+\RedeclareSectionCommand[beforeskip=0pt]{chapter}
+\clearscrheadfoot
+
+%\ifoot[\rule{0pt}{\ht\strutbox+\dp\strutbox}DHBW Mannheim]{\rule{0pt}{\ht\strutbox+\dp\strutbox}DHBW Mannheim}
+%\ofoot[\rule{0pt}{\ht\strutbox+\dp\strutbox}\pagemark]{\rule{0pt}{\ht\strutbox+\dp\strutbox}\pagemark}
+%\ohead{\headmark}
+%\ifoot[\rule{0pt}{\ht\strutbox+\dp\strutbox}DHBW Mannheim]{\rule{0pt}{\ht\strutbox+\dp\strutbox}DHBW Mannheim}
+\ofoot[\rule{0pt}{\ht\strutbox+\dp\strutbox}\pagemark]{\rule{0pt}{\ht\strutbox+\dp\strutbox}\pagemark}
+\ohead{\headmark}
+% Added by lyx2lyx
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\end_preamble
+\options BCOR=5mm,DIV=12,headinclude=on,footinclude=off,parskip=half,paper=a4,listof=entryprefix,toc=bibliography,pointlessnumbers
+\use_default_options true
+\maintain_unincluded_children no
+\language ngerman
+\language_package babel
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement H
+\float_alignment class
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "hidelinks=true"
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_options autocite=inline
+\biblatex_bibstyle numeric
+\biblatex_citestyle numeric
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\branch Sperrvermerk
+\selected 0
+\filename_suffix 0
+\color background background
+\end_branch
+\branch Erklärung
+\selected 1
+\filename_suffix 0
+\color background background
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 3cm
+\rightmargin 2.5cm
+\bottommargin 3cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\listings_params "comment={[l]{//}},commentstyle={\color{purple}\ttfamily},identifierstyle={\color{black}},keywords={typeof, catch, return, null, catch, switch, if, in, while, do, else, case, break},keywordstyle={\color{cyan}\bfseries},morecomment={[s]{/*}{*/}},ndkeywords={class, export, boolean, throw, implements, import, this, function, var, true, false, new},ndkeywordstyle={\color{blue}\bfseries},sensitive=false,stringstyle={\color{red}\ttfamily},backgroundcolor={\definecolor{beige}{RGB}{252, 250, 237}\color{beige}}"
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Titel der Arbeit:
+ 
+\end_layout
+
+\end_inset
+
+Demonstrator für die diskrete Fourier-Transformation in JavaScript
+\end_layout
+
+\begin_layout Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ihr Name:
+ 
+\end_layout
+
+\end_inset
+
+Niklas Herhoffer
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+insertmatrikel}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ihre Matrikelnummer:
+ 
+\end_layout
+
+\end_inset
+
+9325144
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+insertkurs}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ihr Kurs:
+ 
+\end_layout
+
+\end_inset
+
+TEL22AT1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+insertstudienrichtung}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ihre Studienrichtung:
+ 
+\end_layout
+
+\end_inset
+
+Elektrotechnik für Automation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+insertthesistype}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Art der Arbeit (Projektarbeit 1,
+ Projektarbeit 2,
+ Bachelorarbeit):
+ 
+\end_layout
+
+\end_inset
+
+Studienarbeit
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\backslash
+let
+\backslash
+inserttitle
+\backslash
+@title
+\backslash
+let
+\backslash
+insertauthor
+\backslash
+@author
+\backslash
+makeatother
+\backslash
+begin{titlepage}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset VSpace -1.5cm
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename img/logo.jpg
+	lyxscale 50
+	special height=2.5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\family sans
+
+\begin_inset VSpace 1.5cm
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "foreground"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\family sans
+\series bold
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+insertthesistype
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+T3100
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\family sans
+\series bold
+\size larger
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+inserttitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace 1.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+Studiengang Elektrotechnik
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\family sans
+Dualen Hochschule Baden-Württemberg Mannheim
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\family sans
+\begin_inset VSpace 1.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+von
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\series bold
+Niklas Herhoffer
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+\noindent
+\align center
+
+\family sans
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Bearbeitungszeit:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 Wochen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Matrikelnummer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+insertmatrikel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Kurs:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+insertkurs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Fachlicher Betreuung:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Prof.
+ Dr.
+ Rüdiger Heintz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\backslash
+pagenumbering{roman}
+\backslash
+normalfont
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Erklärung
+inverted 0
+status open
+
+\begin_layout Chapter*
+Erklärung
+\end_layout
+
+\begin_layout Standard
+Ich versichere hiermit,
+ dass ich die vorliegende Arbeit mit dem Thema:
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+inserttitle
+\end_layout
+
+\end_inset
+
+
+\emph default
+ 
+\end_layout
+
+\begin_layout Standard
+selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe.
+ Ich versichere zudem,
+ dass die eingereichte elektronische Fassung mit der gedruckten Fassung übereinstimmt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ort,
+ Datum
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+insertauthor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Kurzfassung (Abstract)
+\end_layout
+
+\begin_layout Standard
+Hier können Sie die Kurzfassung der Arbeit schreiben.
+ Beispielsweise behandelt diese Arbeit eine Darstellung,
+ wie die Bearbeitung von wissenschaftlichen Texten auf Basis des \SpecialChar LaTeX
+-Textsatzsystems mit Nutzung des \SpecialChar LyX
+-Editors umgesetzt werden kann.
+ Durch diesen exemplarischen Text werden sowohl einige grundlegende Möglichkeiten dargestellt,
+ die sich durch Nutzung der Software ergeben,
+ als auch einige Hilfen gegeben,
+ wie eine Umsetzung erfolgen kann.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Addchap
+Abkürzungsverzeichnis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{acronym}[WYSIWSM] % <- Das längste Acronym wird hier angegeben.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+acro{VSCode}{Visual Studio Code}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+acro{DFT}{Diskrete Fouriertransformation}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+acro{FFT}{Fast Fouriertransformation}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+acro{GUI}{Graphical User Interface}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{acronym}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ihead{
+\backslash
+chaptername~
+\backslash
+thechapter} % Neue Header-Definition (inner header) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ohead{
+\backslash
+headmark} % Neue Header-Definition (outer header) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}  % Arabische Seitenzahlen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Einleitung
+\end_layout
+
+\begin_layout Standard
+Dieses Kapitel unterteilt sich in 5 Unterkapitel,
+ in welchen die Wichtigkeit des Projektes anhand der Aufgaben- und Zielstellung,
+ sowie der Einführung in das Projekt beschrieben wird.
+ Zudem wird hier der Stand der Technik und der Aufbau der Arbeit im Gesamten behandelt.
+\end_layout
+
+\begin_layout Section
+Einführung in das Projekt
+\end_layout
+
+\begin_layout Standard
+Die Fouriertransformation ist besonders für Studierende des Das Projekt befasst sich mit der Endwicklung eines Demonstrators für die diskrete Fourier-Transformation in der Programmiersprache JavaScript.
+ 
+\end_layout
+
+\begin_layout Section
+Aufgabenstellung
+\end_layout
+
+\begin_layout Standard
+Der Demonstrator ist in der Programmiersprache JavaScript zu entwickeln.
+ Dies hat den Zweck,
+ dass es sich um eine WebAnwendung handelt,
+ welche leicht mit jedem Browser verwendet werden kann.
+ Zum demonstrieren der diskreten Fourier-Transformation ist die Möglichkeit eines Mikrofon-Input,
+ als die Möglichkeit eines Sinussignaks mit veränderlicher Frequenz zu implementieren.
+ Mit dem Sinussignal wird die Funktionabilität des Demonstrators überprüft und vorgeführt.
+ Der Mikrofoninput wird verwendet um die genauigkeit des Demonstrators zu aufzuzeigen.
+ Der Schematische Aufbau des Programms wird in der folgenden Abbildung aufgeführt.
+ Hier ist zu sehen,
+ dass zwischen den Signaleingängen "Mikrofon" und "Sinus" gewählt erden kann.
+ Das resultierende Signal wird daraufhin mit Hilfe einer Bibliothek für Disktreten Forier-Transformation in Zeit und Wert dikretisiert und daraufhin transformiert.
+ Daraus resultiert dann das Zeitliche Signal in spektraler auflösung.
+ Dieses wird dann grafisch in einem 3-Dimensionalen Plot dargestellt mit einer Achse jeweils für Amplitude,
+ Zeit und Frequenz.
+ Als Vorbild für die grafische Darstellung dient die folgende Abbildung.
+ Diese zeigt den grafischen Output eines 3-dimensionalen Frequenzanalyse.
+ Solch eine Analyse ist besonders für Audio-Signale sinnvoll.
+\end_layout
+
+\begin_layout Section
+Ziele der Arbeit
+\end_layout
+
+\begin_layout Standard
+Ziel dieser Arbeit ist die Entwicklung einer 3-dimensionalen Frequenzanalyse für Audio-Signale,
+ sowie eines Frequenzgenerators mit variabler Frequenz.
+ Dieser Demonstrator ist in mindestens zwei verscheidenen Browsern auf Funktion zu testen.
+\end_layout
+
+\begin_layout Section
+Stand der Technik
+\end_layout
+
+\begin_layout Standard
+In diesem Unterkapitel wird der Stand der Technik aufbereitet.
+ Relevant für dieses Projekt sind hier vorrangig die Auswahl der 3D-Visualisierungsbibliothek und die Auswahl der Bibliothek für FFT und Audio-Input.
+\end_layout
+
+\begin_layout Subsection
+Bibliothek für 3D-Visualisierungsbibliothek
+\end_layout
+
+\begin_layout Standard
+Für die Visualisierung der Daten in einem 3-dimensionalen Plot stehen einige verschiedene Bibliotheken für JavaScript zur verfügung.
+ Eine Auswahl dieser sind 
+\end_layout
+
+\begin_layout Standard
+Three.JS
+\end_layout
+
+\begin_layout Standard
+d3.JS
+\end_layout
+
+\begin_layout Standard
+Plotly.js
+\end_layout
+
+\begin_layout Standard
+Three.js:
+\end_layout
+
+\begin_layout Standard
+Three.js ist eine Bibliothek,
+ mit welcher einfach 3D Animationen in JavaScript erstellt und angezeigt werden können.
+ Hier kann mit dem nötigen Aufwand alles genau so dargestellt werden,
+ wie man es möchte.
+\end_layout
+
+\begin_layout Standard
+d3.js:
+\end_layout
+
+\begin_layout Standard
+Diese Bibliothek ist eine mächtige low level Bibliothek für die Visualisierung von Daten.
+ d3 steht hier für "Data Driven Documents".
+ Mit dieser Bibliothek lassen sich 2D,
+ sowie 3D plots von Daten erstellen.
+ Heir jedoch mit,
+ im Vergleich zu Three.js,
+ hohen Aufwand.
+\end_layout
+
+\begin_layout Standard
+Plotly.js:
+\end_layout
+
+\begin_layout Standard
+Diese Bibliothek steht für verschiedene Programmiersprachen zur verfügung und konzentriert sich nur auf das Anzeigen und Animieren von Plots im speziellen.
+ Der Fokus bei dieser Bibliothek liegt also nicht auf das Abdecken von möglichst vielen Anwendungsfällen,
+ sondern darauf,
+ Plots mit möglichst wenig Aufwand und in kurzer Zeit darstellen zu können.
+\end_layout
+
+\begin_layout Standard
+Für dieses Projekt ist letztendlich Plotly.js für die Visulaisierung der Daten gewählt worden.
+ Diese Entscheidung ist auf den einfachen Aufbau und die Einfache Bedienung zurückzuführen.
+\end_layout
+
+\begin_layout Subsection
+FFT Bibliotheken
+\end_layout
+
+\begin_layout Standard
+Um das Audiosignal im Spektrum betrachten zu können wird eine Fast Fourier Transformation (FFT) durchgeführt.
+ Dies kann nach verschiedenen Algorithmen geschehen.
+ Solche Algorithmen sind häufig in verschiedenen Bibliotheken eingebunden und können somit leicht verwendet werden.
+\end_layout
+
+\begin_layout Standard
+FFt.js
+\end_layout
+
+\begin_layout Standard
+KissFFT
+\end_layout
+
+\begin_layout Standard
+Web Audio APIs MediaDevices
+\end_layout
+
+\begin_layout Standard
+Diese Bibliothek beinhaltet neben einer Audio Eingabe zusätzlich auch die Möglichkeit einer Frequenzanalyse des Audio Inputs.
+ Hier ist jedoch darauf zu achten,
+ dass diese Web API nur funktioniert,
+ wenn auf den Web Server,
+ auf dem das JavaScript-Programm läuft,
+ mit "https" zugegriffen wird.
+ Diese Bibliothek nutzt hier den Algorithmus
+\end_layout
+
+\begin_layout Subsection
+Bibliothek für den Audio Input
+\end_layout
+
+\begin_layout Standard
+Um die Eingabe des Mikrofons zu ermöglichen muss diese implementiert werden.
+ Hierfür kann mit einer Bibliothek gearbeitet werden oder die oben genannte Web Audio API verwendet werden.
+ In dieser Arbeit wird auf die Verwendung einer zusätzlichen Bibliothek verzichtet,
+ da eine solche Bibliothek wie z.B.
+ Microphone.js nur eine leicht einfachere Verwendung der Web Audio API darstellt.
+ Da jedoch die Signalverarbeitung mittels FFT über die Web Audio API leichter zu implementieren,
+ wenn auch dessen eigener AudioInput genutzt wird,
+ wird deshalb darauf zurückgegriffen.
+ Zudem ist mit der Web Audio API Browserübergreifend die Funktionalität sichergestellt.
+\end_layout
+
+\begin_layout Chapter
+Technische Grundlagen
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel werden die benötigten Grundlagen für das Projekt beschrieben und erklärt.
+ Hierzu zählen Grundlagen zu JavaScript und zur diskreten Fouriertransformation.
+\end_layout
+
+\begin_layout Section
+JavaScript
+\end_layout
+
+\begin_layout Standard
+JavaScript ist eine Programmiersprache,
+ welche 1995 erschienen ist.
+ Sie wird vor allem dazu genutzt,
+ um Webseiten dynamischer und interaktiver zu gestallten,
+ bietet jedoch auch die Möglichkeit Desktop-Apps und Backend-APIs zu erstellen.Zudem zählt sie zu den beliebtesten Programmiersprachen weltweit .
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "simpson_how_2023"
+literal "false"
+
+\end_inset
+
+ Seite 1)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/Ausschnitt Statistik.png
+	lyxscale 60
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statistik"
+
+\end_inset
+
+Statistik zu den meistgenutzten Programmiersprachen bei Entwicklern im Jahr 2024.
+ (Ausschnitt aus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Statistik-komplett"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "stack_overflow_most_2024"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Beliebtheit von JavaScript wird durch die Statistik in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Statistik"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ bestätigt.
+ Diese zeigt das Ergebnis einer Umfrage von Stack Overflow im Juli 2024.
+ 62,3% der Teilnehmer wählten hier JavaScript als Programmiersprache,
+ welche sie benutzen und gerne weiterhin benutzen möchten.
+\end_layout
+
+\begin_layout Standard
+JavaScript bietet einige Vorteile,
+ welche das Programmieren vereinfachen.
+ Diese sind zum Beispiel die dynamische Typisierung von Variablen.
+ Denn hier ist ähnlich wie bei Python der Typ einer Variable nicht weiter wichtig.
+ Dieser wird vom Interpreter automatisch nach Inhalt der Variable festgelegt.
+\end_layout
+
+\begin_layout Section
+Diskrete Fouriertransformation
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ ermöglicht es Rechnern eine Fouriertransformation durchzuführen.
+ Die herkömmliche Fouriertransformation benötigt immer alle Abtastwerte 
+\begin_inset Formula $(x_{n})_{n\epsilon\mathbb{Z}}$
+\end_inset
+
+.Die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ kann jedoch nur bei zeit- und wertdiskreten Signalen verwendet werden.
+ Hier wird also eine endliche Anzahl von Werten betrachtet:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(x_{n})_{n=0}^{N-1}\label{eq:Gleichung-1}
+\end{equation}
+
+\end_inset
+
+mit N als Anzahl der Abtastwerte.
+ Außerhalb dieses Intervalls sind die Werte für 
+\begin_inset Formula $x_{n}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Für die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ergibt sich die Formel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(x_{n})_{n=0}^{N-1}\rightarrow X_{DFT}:=\sum_{n=0}^{N-1}x_{n}\cdot e^{-jn\Omega_{m}}\label{eq:Gleichnung-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+mit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Omega_{m}:=\frac{2\pi m}{N}\label{eq:Gleichung-3}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+m=0,\ldots N-1\label{eq:Gleichung-4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Anzahl der Ergebnisse einer 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ist immer genau so groß wie die Anzahl der Abtastwerte,
+ die der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+übergeben werden.
+\end_layout
+
+\begin_layout Standard
+(vgl.
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "beucher_signale_2019"
+literal "false"
+
+\end_inset
+
+Seite 318f.)
+\end_layout
+
+\begin_layout Chapter
+Demonstrator für die diskrete Fouriertransformation
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird die Durchführung des Projekts mit den einzelnen Meilensteinen und Sackgassen beschrieben.
+ Außerdem wird auch das Endprodukt geunau beschrieben.
+\end_layout
+
+\begin_layout Section
+Entwicklungsumgebung
+\end_layout
+
+\begin_layout Standard
+Als Entwicklungsumgebung wird 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{VSCode}
+\end_layout
+
+\end_inset
+
+ verwendet.
+ Dieser Editor bietet die Möglichkeit die Funktionalität mittels Erweiterungen zu vergrößern.
+ In diesem Projekt wird die Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+Live Server
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet,
+ welche das Hosten eines lokalen Servers für HTML-Dateien ermöglicht.
+ JavaScript Dateien,
+ welche in die HTML-Datei eingebettet werden,
+ wie schon in Kapitel ...
+ erwähnt,
+ auf der Client-Seite mit dessen Hardware ausgeführt.
+ Dies ermöglicht eine geringe Auslastung auf der Server-Seite.
+ Weiter hat die Erweiterung 
+\begin_inset Quotes gld
+\end_inset
+
+Live Server
+\begin_inset Quotes grd
+\end_inset
+
+ die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+live reload
+\begin_inset Quotes grd
+\end_inset
+
+ die eine dynamische Entwicklung von Webseiten und Webanwendungen ermöglicht.
+ Mit 
+\begin_inset Quotes gld
+\end_inset
+
+live reload
+\begin_inset Quotes grd
+\end_inset
+
+ wird der Server automatisch neu geladen,
+ sobald eine Änderung in den Quelldateien vorgenommen wird.
+ 
+\end_layout
+
+\begin_layout Section
+Programmierung
+\end_layout
+
+\begin_layout Standard
+Der Demonstrator ist wie schon erwähnt in JavaScript programmiert.
+ Um diesen auszuführen benötigt es einer Einbindung in eine HTML-Datei.
+ Dies geschieht in dem Projekt in der so genannten index.html.
+ 
+\end_layout
+
+\begin_layout Standard
+Genauere Erklärungen zu den einzelnen Dateien erfolgen im Folgenden zu den selbst programmierten Dateien.
+ Zu Funktionen der Bibliotheken wird auf die jeweilige Dokumentation der Bibliothek verwiesen.
+\end_layout
+
+\begin_layout Subsection
+index.html
+\end_layout
+
+\begin_layout Standard
+Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:HTML"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist die HTML Datei des Demonstrators.
+ Hier wird in Zeile 5-7 das DIV-Element festgelegt und konfiguriert.
+ Das DIV-Element wird benötigt,
+ um als Referenz für die JavaScript-Datei zu dienen.
+ Direkt unter dem DIV-Element in Zeile 8-12 werden die einzelnen JavaScript-Dateien und Bibliotheken,
+ die für den Demonstrator benötigt werden,
+ aufgerufen.
+ Die zwei Dateien 
+\begin_inset Quotes gld
+\end_inset
+
+microphone.js
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+sinusGenerator.js
+\begin_inset Quotes grd
+\end_inset
+
+ beinhalten die Objekte für den Mikrofon-Eingang und des Sinus-Generator,
+ sowie dazugehörige Methoden zur Frequenzanalyse.
+ Die Datei 
+\begin_inset Quotes gld
+\end_inset
+
+lil-gui.js
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine Bibliothek für Nutzereingaben in JavaScript.
+ Diese erstellt mit gegebenen Parametern eine Nutzeroberfläche,
+ mit der Änderungen an Parametern durchgeführt werden können.
+ Die Datei 
+\begin_inset Quotes gld
+\end_inset
+
+plotly-2.35.2.min.js
+\begin_inset Quotes grd
+\end_inset
+
+ ist die hier genutzte Bibliothek zur grafischen Ausgabe von 3-dimensionalen Plots in das oben genannte DIV-Element.
+ Die Datei 
+\begin_inset Quotes gld
+\end_inset
+
+main.js
+\begin_inset Quotes grd
+\end_inset
+
+ vereint bereits genannten Dateien und Bibliotheken.
+ Diese nutzt die aus diesen gegebenen Funktionen und Methoden,
+ um den Demonstrator zu realisieren.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML,float,breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<!DOCTYPE html>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+<head></head>
+\end_layout
+
+\begin_layout Plain Layout
+
+<body>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <div id = "demonstrator">
+\end_layout
+
+\begin_layout Plain Layout
+
+        <p style="height:
+ 100vh;
+ width:
+ 100vw;"></p>
+\end_layout
+
+\begin_layout Plain Layout
+
+    </div>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <script src="microphone.js"></script>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <script src="sinusGenerator.js"></script>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <script type="module" src="lil-gui.js"></script>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <script type="module" src="plotly-2.35.2.min.js"></script>
+\end_layout
+
+\begin_layout Plain Layout
+
+    <script type="module" src="main.js"></script>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+</body>
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:HTML"
+
+\end_inset
+
+ HTML-Datei des Demontsrators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+microphone.js
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes gld
+\end_inset
+
+microphone.js
+\begin_inset Quotes grd
+\end_inset
+
+ ist in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:microphone"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ abgebildet.
+ Diese ist die JavaScript-Datei,
+ welche das Objekt für den Mikrofoneingang,
+ sowie die dazugehörigen Methoden enthält.
+ Hier wird die Standardbibliothek 
+\begin_inset Quotes gld
+\end_inset
+
+Web Audio API
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet.
+ Der Konstruktor des Objekts initialisiert zuerst die Verbindung zum Mikrofon.
+ Hierfür wird die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+navigator.mediaDevices.getUserMedia()
+\begin_inset Quotes grd
+\end_inset
+
+ mit Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+audio:
+ true
+\begin_inset Quotes grd
+\end_inset
+
+ aufgerufen.
+ Dies führt dazu,
+ dass der Browser eine die Mikrofonfreigabe bei dem Nutzer erfragt.
+ Wird die Freigabe erteilt,
+ so kann die Verbindung im Konstruktor weiter initialisiert werden und das Signal des Mikrofons wird auf den 
+\begin_inset Quotes gld
+\end_inset
+
+stream
+\begin_inset Quotes grd
+\end_inset
+
+ gelegt.
+ Im Konstruktor wird dann eine AudioContext-Instanz erstellt,
+ welche genutzt wird,
+ um das Mikrofonsignal aus 
+\begin_inset Quotes gld
+\end_inset
+
+stream
+\begin_inset Quotes grd
+\end_inset
+
+ mit der Variablen 
+\begin_inset Quotes gld
+\end_inset
+
+this.microphone
+\begin_inset Quotes grd
+\end_inset
+
+ verknüpft.
+ Ab Zeile 8 wird für die AudioContext-Instanz eine Frequenzanalyse initialisiert.
+ In den Zeilen 9 und 10 werden zwei Parameter festgelegt.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+fftSize
+\begin_inset Quotes grd
+\end_inset
+
+ sagt an,
+ mit wie vielen Punkten die Fouriertransformation aufgelöst ist.
+ Hier ist der Wert 512 festgelegt,
+ da bei der Ausgabe der Frequenzen die Anzahl der Datenpunkte der Hälfte der 
+\begin_inset Quotes gld
+\end_inset
+
+fftSize
+\begin_inset Quotes grd
+\end_inset
+
+ entspricht.
+ Die 
+\begin_inset Quotes gld
+\end_inset
+
+smoothingTimeConstant
+\begin_inset Quotes grd
+\end_inset
+
+ bestimmt eine Konstante,
+ mit welcher die Frequenzanalyse über die Zeit geglättet wird.
+ Dies ist hier unerwünscht und deshalb ist der Wert auf 
+\begin_inset Quotes gld
+\end_inset
+
+0
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt,
+ da der Default-Wert bei 
+\begin_inset Quotes gld
+\end_inset
+
+0,8
+\begin_inset Quotes grd
+\end_inset
+
+ liegt.
+ In Zeile 12 wird ein 
+\begin_inset Quotes gld
+\end_inset
+
+dataArray
+\begin_inset Quotes grd
+\end_inset
+
+ erstellt mit der länge 
+\begin_inset Quotes gld
+\end_inset
+
+frequencyBinCount
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Dies hat den Wert 256,
+ da die Länge der Ausgabe der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ die hälfte der Anzahl der Datenpunkte entspricht.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+dataArray
+\begin_inset Quotes grd
+\end_inset
+
+ wird in der Methode 
+\begin_inset Quotes gld
+\end_inset
+
+getFrequencys
+\begin_inset Quotes grd
+\end_inset
+
+ zur Ausgabe der Frequenzanalyse verwendet.
+ In Zeile 13 wird dann der Mikrofonstream aus der Variablen 
+\begin_inset Quotes gld
+\end_inset
+
+microphone
+\begin_inset Quotes grd
+\end_inset
+
+ mit dem 
+\begin_inset Quotes gld
+\end_inset
+
+analyser
+\begin_inset Quotes grd
+\end_inset
+
+ verbunden.
+ Somit bekommt die Frequenzanalyse die Daten direkt vom Mikrofonstream.
+ Falls die Initialisierung des Mikrofonobjekts (durch ablehnen der Mikrofonberechtigung) nicht durchgeführt werden kann,
+ so wird eine Errormeldung ausgeworfen.
+\end_layout
+
+\begin_layout Standard
+Die Methode 
+\begin_inset Quotes gld
+\end_inset
+
+getFrequencys()
+\begin_inset Quotes grd
+\end_inset
+
+ wird ab Zeile 19 initialisiert.
+ Hier wird mit der Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+getByteFrequencyData()
+\begin_inset Quotes grd
+\end_inset
+
+ des Analysers die Werte der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ in das Array 
+\begin_inset Quotes gld
+\end_inset
+
+dataArray
+\begin_inset Quotes grd
+\end_inset
+
+ geladen.
+ Die Ausgabe des der Frequenzen erfolgt dann über das Array 
+\begin_inset Quotes gld
+\end_inset
+
+frequencys
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class Microphone {
+\end_layout
+
+\begin_layout Plain Layout
+
+    constructor(){
+\end_layout
+
+\begin_layout Plain Layout
+
+        this.initialized = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+        navigator.mediaDevices.getUserMedia({audio:
+ true})
+\end_layout
+
+\begin_layout Plain Layout
+
+        .then(function(stream){
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.audioContext = new AudioContext();
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.microphone = this.audioContext.createMediaStreamSource(stream);
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.analyser = this.audioContext.createAnalyser();
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.analyser.fftSize = 512;
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.analyser.smoothingTimeConstant = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+            const bufferLength = this.analyser.frequencyBinCount;
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.dataArray = new Uint8Array(bufferLength);
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.microphone.connect(this.analyser);
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.initialized = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }.bind(this)).catch(function(err){
+\end_layout
+
+\begin_layout Plain Layout
+
+            alert(err);
+\end_layout
+
+\begin_layout Plain Layout
+
+        })
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    getFrequencys(){
+\end_layout
+
+\begin_layout Plain Layout
+
+        this.analyser.getByteFrequencyData(this.dataArray);
+\end_layout
+
+\begin_layout Plain Layout
+
+        let frequencys = [...this.dataArray];
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        return frequencys;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:microphone"
+
+\end_inset
+
+Objekt-Datei zur Nutzung des Mikrofons über den Browser
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+sinusGenerator.js
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes gld
+\end_inset
+
+sinusGenerator.js
+\begin_inset Quotes grd
+\end_inset
+
+ wird in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:Sinus"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ abgebildet.
+ Diese Datei enthält die Klasse des 
+\begin_inset Quotes gld
+\end_inset
+
+SineGenerators
+\begin_inset Quotes grd
+\end_inset
+
+ und ist ähnlich aufgebaut wie die Klasse des Mikrofons.
+ Unterschiede finden sich hier in der Zeile 7-9,
+ 15 und 16 im Konstruktor,
+ sowie in der Methode 
+\begin_inset Quotes gld
+\end_inset
+
+setFrequency
+\begin_inset Quotes grd
+\end_inset
+
+ ab Zeile 28.
+ Im Konstruktor in Zeile 7 wird als Funktion der AudioContext-Instanz ein Oszillator generiert und als 
+\begin_inset Quotes gld
+\end_inset
+
+sineGenerator
+\begin_inset Quotes grd
+\end_inset
+
+ gespeichert.
+ In der Zeile 8 wird die Wellenform als 
+\begin_inset Quotes gld
+\end_inset
+
+sine
+\begin_inset Quotes grd
+\end_inset
+
+ (Sinus) festgelegt.
+ Mit 
+\begin_inset Quotes gld
+\end_inset
+
+sineGenerator.frequency.setValueAtTime()
+\begin_inset Quotes grd
+\end_inset
+
+ wird die Frequenz der Sinus-Generators festgelegt.
+ Der Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+f
+\begin_inset Quotes grd
+\end_inset
+
+ ist hierbei die Frequenz und der Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+this.audioContext.currentTime
+\begin_inset Quotes grd
+\end_inset
+
+ beschreibt die aktuelle Zeit,
+ da die Funtion 
+\begin_inset Quotes gld
+\end_inset
+
+setValueAtTime()
+\begin_inset Quotes grd
+\end_inset
+
+ eine Zeitangabe benötigt.
+ In Zeile 15 wird der Sinus-Generator mit dem Frequenzanalyser verknüpft und in der folgenden Zeile gestartet.
+ Die Methode 
+\begin_inset Quotes gld
+\end_inset
+
+setFrequency(f)
+\begin_inset Quotes grd
+\end_inset
+
+ erhält bei Aufruf den Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+f
+\begin_inset Quotes grd
+\end_inset
+
+ und führt die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+frequency.setValueAtTime()
+\begin_inset Quotes grd
+\end_inset
+
+ mit dem Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+f
+\begin_inset Quotes grd
+\end_inset
+
+ und der aktuellen Zeit aus,
+ um die Frequenz des Generators zu ändern.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+class SineGenerator {
+\end_layout
+
+\begin_layout Plain Layout
+
+    constructor(f){
+\end_layout
+
+\begin_layout Plain Layout
+
+        this.initialized = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+        navigator.mediaDevices.getUserMedia({audio:
+ true})
+\end_layout
+
+\begin_layout Plain Layout
+
+        .then(function(stream){
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.audioContext = new AudioContext();
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.sineGenerator = this.audioContext.createOscillator();
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.sineGenerator.type = "sine";
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.sineGenerator.frequency.setValueAtTime(f,
+ this.audioContext.currentTime);
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.analyser = this.audioContext.createAnalyser();
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.analyser.fftSize = 512;
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.analyser.smoothingTimeConstant = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+            const bufferLength = this.analyser.frequencyBinCount;
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.dataArray = new Uint8Array(bufferLength);
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.sineGenerator.connect(this.analyser);
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.sineGenerator.start();
+\end_layout
+
+\begin_layout Plain Layout
+
+            this.initialized = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }.bind(this)).catch(function(err){
+\end_layout
+
+\begin_layout Plain Layout
+
+            alert(err);
+\end_layout
+
+\begin_layout Plain Layout
+
+        })
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    getFrequencys(){
+\end_layout
+
+\begin_layout Plain Layout
+
+        this.analyser.getByteFrequencyData(this.dataArray);
+\end_layout
+
+\begin_layout Plain Layout
+
+        let frequencys = [...this.dataArray];
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        return frequencys;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    setFrequency(f){
+\end_layout
+
+\begin_layout Plain Layout
+
+        this.sineGenerator.frequency.setValueAtTime(f,
+ this.audioContext.currentTime);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Sinus"
+
+\end_inset
+
+Objekt-Datei zur Nutzung des Sinus-Generators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+main.js
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes gld
+\end_inset
+
+main.js
+\begin_inset Quotes grd
+\end_inset
+
+ ist das Hauptprogramm des Demonstrators und vereint alle Klassen und Bibliotheken,
+ die hierfür benötigt werden.
+ Am Anfang der 
+\begin_inset Quotes gld
+\end_inset
+
+main.js
+\begin_inset Quotes grd
+\end_inset
+
+ befindet sich der Programmabschnitt,
+ der in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:GUI"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zu sehen ist.
+ Hier wird eine Instanz der Klasse 
+\begin_inset Quotes gld
+\end_inset
+
+GUI
+\begin_inset Quotes grd
+\end_inset
+
+ aus der Bibliothek 
+\begin_inset Quotes gld
+\end_inset
+
+lil-gui.js
+\begin_inset Quotes grd
+\end_inset
+
+ erstellt und konfiguriert.
+ Eine 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ bietet die Möglichkeit einer Nutzerinteraktion mit der Webseite.
+ Die hier erstellte Instanz 
+\begin_inset Quotes gld
+\end_inset
+
+gui
+\begin_inset Quotes grd
+\end_inset
+
+ benötigt ein Objekt mit Attributen,
+ die von der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ verändert oder als Funktion ausgeführt werden.
+ Dieses Objekt wird als 
+\begin_inset Quotes gld
+\end_inset
+
+controls
+\begin_inset Quotes grd
+\end_inset
+
+ initiiert und enthält die in Zeile 4-8 dargestellten Attribute.
+ Diese Attribute werden ab Zeile 10 der 
+\begin_inset Quotes gld
+\end_inset
+
+gui
+\begin_inset Quotes grd
+\end_inset
+
+-Instanz hinzugefügt.
+ Die Bibliothek 
+\begin_inset Quotes gld
+\end_inset
+
+lil-gui.js
+\begin_inset Quotes grd
+\end_inset
+
+ ändert die Art des Nutzereingabe anhand des Typs des Attributs.
+ Ist das Attribut eine Funktion,
+ so wird in der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ ein Taster angezeigt.
+ Ist das Attribut eine Zahl und es wird ein Intervall angegeben,
+ so ist in der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ ein Schieberegler eingebunden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+let gui = new lil.GUI();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+var stop = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+var controls = {
+\end_layout
+
+\begin_layout Plain Layout
+
+    mikrofon:
+ function(){startMikrofon()},
+\end_layout
+
+\begin_layout Plain Layout
+
+    sinus:
+ function(){startSinus()},
+\end_layout
+
+\begin_layout Plain Layout
+
+    frequenz:
+ 1,
+\end_layout
+
+\begin_layout Plain Layout
+
+    stop:
+ function(){stop = true;},
+\end_layout
+
+\begin_layout Plain Layout
+
+    clear:
+ function(){clearPlot()}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+gui.add(controls,
+ 'mikrofon');
+\end_layout
+
+\begin_layout Plain Layout
+
+gui.add(controls,
+ 'sinus');
+\end_layout
+
+\begin_layout Plain Layout
+
+gui.add(controls,
+ 'frequenz',
+ 0,
+ 20000).onChange( value => {
+\end_layout
+
+\begin_layout Plain Layout
+
+    sinus.setFrequency(value);
+\end_layout
+
+\begin_layout Plain Layout
+
+});
+\end_layout
+
+\begin_layout Plain Layout
+
+gui.add(controls,
+ 'stop');
+\end_layout
+
+\begin_layout Plain Layout
+
+gui.add(controls,
+ 'clear');
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:GUI"
+
+\end_inset
+
+Programmteil zur Initzialisierung und Konfigurierung der GUI mit lil-gui.js
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der nächste Programmabschnitt aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:Plotly"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ beginnt mit dem Verknüpfen der Variablen 
+\begin_inset Quotes gld
+\end_inset
+
+DEMONSTRATOR
+\begin_inset Quotes grd
+\end_inset
+
+ mit dem DIV-Element der HTML-Datei.
+ in Zeile 3 Wird ein 2-dimensionales Array als Platzhalter für die Werte der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ erstellt.
+ Dieses Array wird dann in das Array aus Objekten 
+\begin_inset Quotes gld
+\end_inset
+
+data
+\begin_inset Quotes grd
+\end_inset
+
+ eingebunden.
+ Zudem wird der Typ des Plots in Zeile 7 als 
+\begin_inset Quotes gld
+\end_inset
+
+surface
+\begin_inset Quotes grd
+\end_inset
+
+ Festgelegt,
+ was in ein Surfaceplot resultiert.
+ Die beiden weiteren Attribute 
+\begin_inset Quotes gld
+\end_inset
+
+showscale
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+displayModeBar
+\begin_inset Quotes grd
+\end_inset
+
+ haben nur kosmetische Effekte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var DEMONSTRATOR = document.getElementById('demonstrator');
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+let z_data = new Array(200).fill(0).map(()=>new Array(256).fill(0));
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+var data = [{
+\end_layout
+
+\begin_layout Plain Layout
+
+    z:
+ z_data,
+\end_layout
+
+\begin_layout Plain Layout
+
+    type:
+ 'surface',
+\end_layout
+
+\begin_layout Plain Layout
+
+    showscale:
+ false,
+\end_layout
+
+\begin_layout Plain Layout
+
+    displayModeBar:
+ false
+\end_layout
+
+\begin_layout Plain Layout
+
+}];
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Plotly"
+
+\end_inset
+
+Programmteil zum Erstellen des 2-dimensionalen Daten Arrays,
+ sowie Auswahl des DIV-Elements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Programmausschnitt aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:PlotlyConfiguration"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ enthält die Konfiguration des Plots.
+ Hier werden einige Elemente,
+ die von 
+\begin_inset Quotes gld
+\end_inset
+
+Plotly.js
+\begin_inset Quotes grd
+\end_inset
+
+ standartmäßig angezeigt werden,
+ ausgeblendet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var defaultPlotlyConfiguration = { 
+\end_layout
+
+\begin_layout Plain Layout
+
+    modeBarButtonsToRemove:
+ [
+\end_layout
+
+\begin_layout Plain Layout
+
+        'pan',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'orbitRotation',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'tableRotation',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'resetCameraDefault3d',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'resetCameraLastSave3d',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'zoom',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'toImage',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'sendDataToCloud',
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+        'autoScale2d',
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+        'hoverClosestCartesian',
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+        'hoverCompareCartesian',
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+        'lasso2d',
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+        'select2d'
+\end_layout
+
+\begin_layout Plain Layout
+
+    ],
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    displaylogo:
+ false,
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    showTips:
+ false
+\end_layout
+
+\begin_layout Plain Layout
+
+};
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:PlotlyConfiguration"
+
+\end_inset
+
+Programmteil zu Konfigurierung der Plotumgebung.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der folgende Programmausschnitt Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:PlotlyLayout"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ enthält das Layout des Plots ,
+ sowie die initiale Ausgabe des Plots in der letzten Zeile.
+ Das Layout umfasst den Titel des Plots 
+\begin_inset Quotes gld
+\end_inset
+
+Demonstrator für die diskrete Fouriertransformation
+\begin_inset Quotes grd
+\end_inset
+
+,
+ sowie Einstellungen zur Szene.
+ In der Szene wird definiert von welchem Punkt aus initial auf das Plot geschaut wird.
+ Außerdem wird hier auch die Skalierung der Achsen in Zeile 8 festgelegt,
+ sodass sich die Größe des Plots nicht dynamisch mit den Werten verändert.
+ In Zeile 9-15 wird die X-Achse konfiguriert.
+ Auf dieser werden die Frequenzen abgetragen.
+ Deshalb erhält die X-Achse den Titel 
+\begin_inset Quotes gld
+\end_inset
+
+Frequenz
+\begin_inset Quotes grd
+\end_inset
+
+ und die Achsenbeschriftung wird in Zeile 13 und 14 angepasst.
+ Für die Y-Achse wird der Titel zu 
+\begin_inset Quotes gld
+\end_inset
+
+Zeit
+\begin_inset Quotes grd
+\end_inset
+
+ festgelegt.
+ In Zeile 22-24 wird der gesamte Plot auf die Größe des DIV-Elements skaliert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var layout = {
+\end_layout
+
+\begin_layout Plain Layout
+
+    title:
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+    text:
+ 'Demonstrator für die diskrete Fouriertransformation'
+\end_layout
+
+\begin_layout Plain Layout
+
+    },
+\end_layout
+
+\begin_layout Plain Layout
+
+    scene:
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+        camera:
+ {eye:
+ {x:
+ 1.87,
+ y:
+ 0.88,
+ z:
+ 0.64}},
+\end_layout
+
+\begin_layout Plain Layout
+
+        aspectmode:
+ "manual",
+\end_layout
+
+\begin_layout Plain Layout
+
+        aspectratio:
+ {x:
+ 1,
+ y:
+ 2,
+ z:
+ 0.2},
+\end_layout
+
+\begin_layout Plain Layout
+
+        xaxis:
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+            title:
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+                text:
+ 'Frequenz',
+\end_layout
+
+\begin_layout Plain Layout
+
+            },
+\end_layout
+
+\begin_layout Plain Layout
+
+            tickvals:
+ [0,
+ 53,
+ 106,
+ 159,
+ 212],
+\end_layout
+
+\begin_layout Plain Layout
+
+            ticktext:
+ [0,
+ 5000,
+ 10000,
+ 15000,
+ 20000]
+\end_layout
+
+\begin_layout Plain Layout
+
+        },
+\end_layout
+
+\begin_layout Plain Layout
+
+        yaxis:
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+            title:
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+                text:
+ 'Zeit',
+\end_layout
+
+\begin_layout Plain Layout
+
+            }
+\end_layout
+
+\begin_layout Plain Layout
+
+        },
+\end_layout
+
+\begin_layout Plain Layout
+
+    },
+\end_layout
+
+\begin_layout Plain Layout
+
+    autosize:
+ true,
+\end_layout
+
+\begin_layout Plain Layout
+
+    width:
+ DEMONSTRATOR.clientWidth,
+\end_layout
+
+\begin_layout Plain Layout
+
+    height:
+ DEMONSTRATOR.clientHeight,
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Plotly.newPlot(DEMONSTRATOR,
+ data,
+ layout,
+ defaultPlotlyConfiguration);
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:PlotlyLayout"
+
+\end_inset
+
+Programmteil zur Konfigurierung des Plot-Layouts und erstes Anzeigen des Plots in der HTML-DIV
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Programmabschnitt aus Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:Objekte"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ enthält die Initialisierungen der Instanzen der Klassen 
+\begin_inset Quotes gld
+\end_inset
+
+Microphone
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+SineGenerator
+\begin_inset Quotes grd
+\end_inset
+
+ in Zeile 1 und 8.
+ Zeile 2-6 und Zeile 9-13 enthalten die Funktionen,
+ die durch eine entsprechende 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+-Interaktion ausgeführt werden.
+ Im Funktionskörper wird die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+redraw()
+\begin_inset Quotes grd
+\end_inset
+
+ mit der entsprechende Instanz der Klasse ausgeführt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+const microphone = new Microphone();
+\end_layout
+
+\begin_layout Plain Layout
+
+function startMikrofon(){
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    redraw(microphone);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+const sinus = new SineGenerator(controls.frequenz);
+\end_layout
+
+\begin_layout Plain Layout
+
+function startSinus(){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    redraw(sinus);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Objekte"
+
+\end_inset
+
+Programmteil zur Erstellung von Objektinstanzen und Aufruf der redraw()-Funtion mit entsprechender Instanz.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der folgende Programmabschnitt Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:redraw"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ enthält die Funtion 
+\begin_inset Quotes gld
+\end_inset
+
+redraw()
+\begin_inset Quotes grd
+\end_inset
+
+,
+ sowie die Initialisierung der Variablen 
+\begin_inset Quotes gld
+\end_inset
+
+frequenzen
+\begin_inset Quotes grd
+\end_inset
+
+ in Zeile 1.
+ Die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+redraw()
+\begin_inset Quotes grd
+\end_inset
+
+ ruft zu beginn die Methode 
+\begin_inset Quotes gld
+\end_inset
+
+getFrequencys()
+\begin_inset Quotes grd
+\end_inset
+
+ des entsprechenden Objekts auf mit dem es als Parameter Aufgerufen wurde und speichert die Frequenzwerte in dem Array 
+\begin_inset Quotes gld
+\end_inset
+
+frequenzen
+\begin_inset Quotes grd
+\end_inset
+
+ zwischen.
+ In Zeile 8 und 9 wird das 2-dimensionale Array 
+\begin_inset Quotes gld
+\end_inset
+
+z_data
+\begin_inset Quotes grd
+\end_inset
+
+ verändert.
+ In Zeile 8 wird der 
+\begin_inset Quotes gld
+\end_inset
+
+head
+\begin_inset Quotes grd
+\end_inset
+
+ entfernt und in Zeile 9 wird das Array 
+\begin_inset Quotes gld
+\end_inset
+
+frequenzen
+\begin_inset Quotes grd
+\end_inset
+
+ an das Ende angehängt.
+ Dem Objekt 
+\begin_inset Quotes gld
+\end_inset
+
+update
+\begin_inset Quotes grd
+\end_inset
+
+ wird das Array 
+\begin_inset Quotes gld
+\end_inset
+
+z_data
+\begin_inset Quotes grd
+\end_inset
+
+ übergeben und wird benötigt,
+ um den Plot mit der Plotly-Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+update()
+\begin_inset Quotes grd
+\end_inset
+
+ zu aktualisieren.
+ Die Funtion 
+\begin_inset Quotes gld
+\end_inset
+
+setTimeout()
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine Standardfunktion von JavaScript,
+ welche einen Funktionskörper,
+ sowie einen Parameter hinter dem Funktionskörper enthält.
+ Dieser Parameter bestimmt,
+ nach welcher Zeit (in Millisekunden) der Funktionskörper ausgeführt werden soll.
+ Hier ist der Parameter auf 10ms festgelegt.
+ Da der Funktionskörper die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+redraw()
+\begin_inset Quotes grd
+\end_inset
+
+ aufruft und die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+setTimeout()
+\begin_inset Quotes grd
+\end_inset
+
+ in von der Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+redraw()
+\begin_inset Quotes grd
+\end_inset
+
+ ausgeführt wird,
+ so ruft die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+redraw()
+\begin_inset Quotes grd
+\end_inset
+
+ rekursiv sich selbst auf,
+ bis die Variable 
+\begin_inset Quotes gld
+\end_inset
+
+stop
+\begin_inset Quotes grd
+\end_inset
+
+ den boolschen Wert 
+\begin_inset Quotes gld
+\end_inset
+
+false
+\begin_inset Quotes grd
+\end_inset
+
+ enthält.
+ Die Variable 
+\begin_inset Quotes gld
+\end_inset
+
+stop
+\begin_inset Quotes grd
+\end_inset
+
+ wird duch die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+-Interaktion 
+\begin_inset Quotes gld
+\end_inset
+
+stop
+\begin_inset Quotes grd
+\end_inset
+
+ verändert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+var frequenzen;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+function redraw(srcObject){
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    frequenzen = srcObject.getFrequencys();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    z_data = z_data.slice(1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    z_data.push(...[frequenzen]);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    var update = {
+\end_layout
+
+\begin_layout Plain Layout
+
+        z:
+ [z_data]
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Plotly.update(DEMONSTRATOR,
+ update,
+ 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    setTimeout(function() {
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (stop === true) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            stop = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+            return;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+        redraw(srcObject);
+\end_layout
+
+\begin_layout Plain Layout
+
+      },
+ 10);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:redraw"
+
+\end_inset
+
+Programmteil mit abruf der Frequenzdaten der entsprechenden Objektinstanz,
+ sowie einem Rekursiven Aufruf des eigenen Funtion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der letzte Programmabschnitt Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:clear"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ enthält die Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+clearPlot()
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Diese wird durch die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+-Interaktion 
+\begin_inset Quotes gld
+\end_inset
+
+clear
+\begin_inset Quotes grd
+\end_inset
+
+ ausgeführt und leert das Array 
+\begin_inset Quotes gld
+\end_inset
+
+z_data,
+ sowie zeichnet das geleerte Plot neu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+function clearPlot(){
+\end_layout
+
+\begin_layout Plain Layout
+
+    z_data = new Array(200).fill(0).map(()=>new Array(256).fill(0));
+\end_layout
+
+\begin_layout Plain Layout
+
+    var update = {
+\end_layout
+
+\begin_layout Plain Layout
+
+        z:
+ [z_data]
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Plotly.update(DEMONSTRATOR,
+ update,
+ 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:clear"
+
+\end_inset
+
+Programmteil mit Funktion zum Leeren des Plots.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ergebnis
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Anfangszustand Programm.png
+	lyxscale 20
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Anfangszustand"
+
+\end_inset
+
+Anfangszustand des Demonstrators nach Erlauben des Mikrofonzugriffs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Ausgabe Mikro.png
+	lyxscale 20
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Mikrofon"
+
+\end_inset
+
+Ausgabe des Plots mit aktivem Mikrofon.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Ausgabe Sinus.png
+	lyxscale 20
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sinus"
+
+\end_inset
+
+Ausgabe des Plots mit aktiviertem Sinus-Generator.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Ausblick
+\end_layout
+
+\begin_layout Standard
+In diesem Kapitel wird ein Ausblich darauf gegeben,
+ wie das Endresultat noch verbessert werden könnte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+bibparsep}{
+\backslash
+parskip}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bibliography,IEEEfull"
+options "bibtotoc"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+appendix
+\backslash
+ihead{
+\backslash
+appendixname~
+\backslash
+thechapter}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Anhang
+\end_layout
+
+\begin_layout Section
+Statistik Programmiersprachen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statistik-komplett"
+
+\end_inset
+
+Statistik zu den meistgenutzten Programmiersprachen bei Entwicklern im Jahr 2024.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "stack_overflow_most_2024"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename img/statistic_id793628_most-widely-utilized-programming-languages-among-developers-worldwide-2024.png
+	lyxscale 20
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
