@@ -59,7 +59,7 @@ var defaultPlotlyConfiguration = {
 
 var layout = {
     title: {
-    text: 'Visualisierung 3D Plot mit Zufallsdaten'
+    text: 'Demonstrator für die diskrete Fouriertransformation'
     },
     scene: {
         camera: {eye: {x: 1.87, y: 0.88, z: 0.64}},
