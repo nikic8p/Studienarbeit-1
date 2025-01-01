@@ -793,7 +793,7 @@ normalfont
 inverted 0
 status open
 
-\begin_layout Chapter*
+\begin_layout Addchap
 Erklärung
 \end_layout
 
@@ -863,7 +863,7 @@ insertauthor
 
 \end_layout
 
-\begin_layout Chapter*
+\begin_layout Addchap
 Kurzfassung (Abstract)
 \end_layout
 
@@ -891,6 +891,22 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\end_layout
 
 \end_inset
 
@@ -1014,116 +1030,194 @@ pagenumbering{arabic}  % Arabische Seitenzahlen
 
 \begin_layout Chapter
 Einleitung
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Einleitung"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Dieses Kapitel unterteilt sich in 5 Unterkapitel,
- in welchen die Wichtigkeit des Projektes anhand der Aufgaben- und Zielstellung,
- sowie der Einführung in das Projekt beschrieben wird.
- Zudem wird hier der Stand der Technik und der Aufbau der Arbeit im Gesamten behandelt.
+In der Elektrotechnik gewinnt das Thema Signalverarbeitung in Zeiten der Digitalisierung an immer größerer Bedeutung.
+ (gibt es hier maybe eine statistik?) Besonders in den Bereichen Bildverarbeitung und Akustik \SpecialChar ldots
+ (hier irgendwas über die anwendung in ein,
+ zwei sätzen) Aus diesem Grund ist die Fourier Analyse bereits früh im Studium der Elektrotechnik verankert.
+ Bei der Fourier Analyse handelt es sich um ein Instrument,
+ das Ausgangssignal gefalteter und überlagerter Signale ohne komplexe Rechnungen berechnen zu können.
+ Dazu wird das sogenannte Spektrum oder auch der sogenannte Bildbereich erschaffen,
+ in die die Signale transformiert werden,
+ dort verrechnet und anschließend rücktransformiert werden können.
+ Aufgrund der Abstraktion,
+ die durch das Erschaffen dieser neuen Dimension geschaffen wird,
+ ergibt sich eine Hürde,
+ das Prinzip verständlich erklären zu können.
+ Deshalb soll zur Veranschaulichung ein Demonstrator geschaffen werden.
+ Mit diesem soll eine grafisch die Verbindung zwischen dem bekannten Zeitbereich und dem abstrakten Bildbereich aufgezeigt werden.
+ Im Verlauf der Bearbeitung wird im ersten Teil die Aufgaben- und Zielstellung ausformuliert.
+ Über eine Betrachtung des Stands der Technik werden die unterschiedlichen Möglichkeiten der Herangehensweise aufgezeigt.
+ Anschließend werden die technischen Grundlagen geschaffen,
+ die sich zum Verständnis und zur Ausarbeitung als notwendig herausstellen.
+ Der nächste Abschnitt der Arbeit stellt eine Dokumentation der Realisierung des Projekts dar,
+ in der die einzelnen Meilensteine und Hürden ausgearbeitet werden.
+ Abschließend wird im Ergebnis die gesammelten Erkenntnisse sowie der finale Stand präsentiert.
 \end_layout
 
-\begin_layout Section
-Einführung in das Projekt
-\end_layout
+\begin_layout Chapter
+Aufgabenstellung und Ziele
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Aufgabenstellung-und-Ziele"
 
-\begin_layout Standard
-Die Fouriertransformation ist besonders für Studierende des Das Projekt befasst sich mit der Endwicklung eines Demonstrators für die diskrete Fourier-Transformation in der Programmiersprache JavaScript.
- 
-\end_layout
+\end_inset
 
-\begin_layout Section
-Aufgabenstellung
+
 \end_layout
 
 \begin_layout Standard
 Der Demonstrator ist in der Programmiersprache JavaScript zu entwickeln.
  Dies hat den Zweck,
- dass es sich um eine WebAnwendung handelt,
+ dass es sich um eine Web-Anwendung handelt,
  welche leicht mit jedem Browser verwendet werden kann.
- Zum demonstrieren der diskreten Fourier-Transformation ist die Möglichkeit eines Mikrofon-Input,
- als die Möglichkeit eines Sinussignaks mit veränderlicher Frequenz zu implementieren.
- Mit dem Sinussignal wird die Funktionabilität des Demonstrators überprüft und vorgeführt.
- Der Mikrofoninput wird verwendet um die genauigkeit des Demonstrators zu aufzuzeigen.
+ Zum Demonstrieren der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ ist die Möglichkeit eines Mikrofon-Input,
+ als die Möglichkeit eines Sinussignals mit veränderlicher Frequenz zu implementieren.
+ Mit dem Sinussignal wird die Funktionalität des Demonstrators überprüft und vorgeführt.
+ Der Mikrofoninput wird verwendet um die Genauigkeit des Demonstrators zu aufzuzeigen.
  Der Schematische Aufbau des Programms wird in der folgenden Abbildung aufgeführt.
  Hier ist zu sehen,
- dass zwischen den Signaleingängen "Mikrofon" und "Sinus" gewählt erden kann.
- Das resultierende Signal wird daraufhin mit Hilfe einer Bibliothek für Disktreten Forier-Transformation in Zeit und Wert dikretisiert und daraufhin transformiert.
- Daraus resultiert dann das Zeitliche Signal in spektraler auflösung.
+ dass zwischen den Signaleingängen "Mikrofon" und "Sinus" gewählt werden kann.
+ Das resultierende Signal wird daraufhin mit Hilfe einer Bibliothek für 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ in Zeit und Wert diskretisiert und daraufhin transformiert.
+ Daraus resultiert dann das Zeitliche Signal in spektraler Auflösung.
  Dieses wird dann grafisch in einem 3-Dimensionalen Plot dargestellt mit einer Achse jeweils für Amplitude,
  Zeit und Frequenz.
  Als Vorbild für die grafische Darstellung dient die folgende Abbildung.
  Diese zeigt den grafischen Output eines 3-dimensionalen Frequenzanalyse.
  Solch eine Analyse ist besonders für Audio-Signale sinnvoll.
-\end_layout
-
-\begin_layout Section
-Ziele der Arbeit
-\end_layout
-
-\begin_layout Standard
-Ziel dieser Arbeit ist die Entwicklung einer 3-dimensionalen Frequenzanalyse für Audio-Signale,
+ Ziel dieser Arbeit ist die Entwicklung einer 3-dimensionalen Frequenzanalyse für Audio-Signale,
  sowie eines Frequenzgenerators mit variabler Frequenz.
- Dieser Demonstrator ist in mindestens zwei verscheidenen Browsern auf Funktion zu testen.
+ Dieser Demonstrator ist in mindestens zwei verschiedenen Browsern auf Funktion zu testen.
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 Stand der Technik
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Stand-der-Technik"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 In diesem Unterkapitel wird der Stand der Technik aufbereitet.
- Relevant für dieses Projekt sind hier vorrangig die Auswahl der 3D-Visualisierungsbibliothek und die Auswahl der Bibliothek für FFT und Audio-Input.
+ Relevant für dieses Projekt sind hier vorrangig die Auswahl der 3D-Visualisierungsbibliothek und die Auswahl der Bibliothek für 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
 \end_layout
 
-\begin_layout Subsection
-Bibliothek für 3D-Visualisierungsbibliothek
+\end_inset
+
+ und Audio-Input.
+\end_layout
+
+\begin_layout Section
+Bibliothek für 3D-Visualisierung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bibliothek-für-3D-Visualisierung"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Für die Visualisierung der Daten in einem 3-dimensionalen Plot stehen einige verschiedene Bibliotheken für JavaScript zur verfügung.
- Eine Auswahl dieser sind 
+ Eine Auswahl dieser werden hier behandelt.
 \end_layout
 
-\begin_layout Standard
-Three.JS
-\end_layout
+\begin_layout Subsection
+Three.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Three.js"
 
-\begin_layout Standard
-d3.JS
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Plotly.js
-\end_layout
 
-\begin_layout Standard
-Three.js:
 \end_layout
 
 \begin_layout Standard
 Three.js ist eine Bibliothek,
- mit welcher einfach 3D Animationen in JavaScript erstellt und angezeigt werden können.
+ mit der 3D Animationen in JavaScript erstellt und angezeigt werden können.
  Hier kann mit dem nötigen Aufwand alles genau so dargestellt werden,
  wie man es möchte.
 \end_layout
 
-\begin_layout Standard
-d3.js:
+\begin_layout Subsection
+d3.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:d3.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Diese Bibliothek ist eine mächtige low level Bibliothek für die Visualisierung von Daten.
  d3 steht hier für "Data Driven Documents".
  Mit dieser Bibliothek lassen sich 2D,
- sowie 3D plots von Daten erstellen.
- Heir jedoch mit,
+ sowie 3D Plots von Daten erstellen.
+ Hier jedoch mit,
  im Vergleich zu Three.js,
  hohen Aufwand.
 \end_layout
 
-\begin_layout Standard
-Plotly.js:
+\begin_layout Subsection
+Plotly.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Plotly.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1134,44 +1228,2802 @@ Diese Bibliothek steht für verschiedene Programmiersprachen zur verfügung und 
 \end_layout
 
 \begin_layout Standard
-Für dieses Projekt ist letztendlich Plotly.js für die Visulaisierung der Daten gewählt worden.
+Für dieses Projekt ist letztendlich Plotly.js für die Visualisierung der Daten gewählt worden.
  Diese Entscheidung ist auf den einfachen Aufbau und die Einfache Bedienung zurückzuführen.
 \end_layout
 
+\begin_layout Section
+Bibliothek für 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bibliothek-für-FFt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um das Audiosignal im Spektrum betrachten zu können wird eine 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ durchgeführt.
+ Diese Arbeiten nach dem 
+\begin_inset Quotes gld
+\end_inset
+
+divide and conquer
+\begin_inset Quotes grd
+\end_inset
+
+ Prinzip.
+ Dadurch wird eine große 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ in viele kleine 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+s geteilt und somit wird der Rechenaufwand verringert.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "gilan_optimized_2024"
+literal "false"
+
+\end_inset
+
+ Seite 2)
+\end_layout
+
+\begin_layout Standard
+Weiter Inhalte zu 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ werden in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:DFT"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ genauer betrachtet.
+\end_layout
+
 \begin_layout Subsection
-FFT Bibliotheken
+fft.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:fft.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Um das Audiosignal im Spektrum betrachten zu können wird eine Fast Fourier Transformation (FFT) durchgeführt.
- Dies kann nach verschiedenen Algorithmen geschehen.
- Solche Algorithmen sind häufig in verschiedenen Bibliotheken eingebunden und können somit leicht verwendet werden.
+Diese Bibliothek ist eine reine Bibliothek zur 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+.
+ Diese nutzt den Radix-4 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ Algorithmus.
+ Dieser teilt die N-Punkt 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ in mehrere 4-Punkt 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+s (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "gilan_optimized_2024"
+literal "false"
+
+\end_inset
+
+ Seite 5).
+ 
 \end_layout
 
 \begin_layout Standard
-FFt.js
+Vorteil dieser Bibliothek ist die schnelle Berechnung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+,
+ besonders für rein reelle Werte,
+ wodurch die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ weitere 25% schneller berechnet werden kann.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "indutny_fastest_2021"
+literal "false"
+
+\end_inset
+
+ README.md)
 \end_layout
 
 \begin_layout Standard
+Nachteil dieser Bibliothek ist,
+ dass die Einbindung dieser via 
+\begin_inset Quotes gld
+\end_inset
+
+npm
+\begin_inset Quotes grd
+\end_inset
+
+,
+ ein Paketmanager für 
+\begin_inset Quotes gld
+\end_inset
+
+node.js
+\begin_inset Quotes grd
+\end_inset
+
+,
+ erforderlich ist.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+node.js
+\begin_inset Quotes grd
+\end_inset
+
+ ist ein JavaScript-Interpreter,
+ der es ermöglicht Desktop-Anwendungen zu implementieren.
+ Dies ist in diesem Projekt nicht erwünscht.
+\end_layout
+
+\begin_layout Subsection
+KissFFT
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:KissFFT"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes gld
+\end_inset
+
+KissFFT
+\begin_inset Quotes grd
+\end_inset
+
+ ist eine Bibliothek,
+ welche für die Programmiersprache 
+\begin_inset Quotes gld
+\end_inset
+
+C
+\begin_inset Quotes grd
+\end_inset
+
+ entwickelt wurde.
+ Diese wurde von den Autoren der JavaScript-Version für JavaScript übersetzt.
+ Der Algorithmus,
+ welcher von dieser Bibliothek verwendet wird ist der so genannte 
+\begin_inset Quotes gld
+\end_inset
+
+Split-Radix
+\begin_inset Quotes grd
+\end_inset
+
+ Algorithmus.
+ Diese vereint die Funktionalität von Radix-4 und Radix-2.
+ Vorteil ist die besonders schnelle Berechnung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+.
+ Dies zeigt Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:BenchmarkFFT"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ welche verschiedene 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ Algorithmen für JavaScript vergleicht.
+ Der KissFFT Algorithmus steht hier mit 
+\begin_inset Formula $80144\frac{itr}{s}$
+\end_inset
+
+ auf dem dritten Platz der schnellsten Algorithmen aus dieser Liste.
+ Nachteil dieser Bibliothek ist hier die Einbindung der Bibliothek mit 
+\begin_inset Quotes gld
+\end_inset
+
+npm
+\begin_inset Quotes grd
+\end_inset
+
+,
+ wie es auch bei fft.js der Fall ist.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:BenchmarkFFT"
+
+\end_inset
+
+Vergleich verschiedener 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ Algorithmen für JavaScript.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "funk_quick_2017"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="5">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="100text%">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Implementation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Result
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Time
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(first half)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Time
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(second half)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Rate
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+(second half)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Nayuki
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+92 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+299 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+73 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+303 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+27255 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+6602 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Nayuki (obj)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+74 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+250 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+58 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+232 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+34707 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+8614 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nayuki (C)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+271 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+63 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+244 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+31749 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+8186 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nayuki (C-float)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+66 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+228 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+61 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+226 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+32835 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+8866 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 KissFFT
 \end_layout
 
-\begin_layout Standard
-Web Audio APIs MediaDevices
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+33 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+88 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+25 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+73 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+80144 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+27399 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+KissFFT (c2c)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+40 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+132 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+36 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+127 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+55394 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+15757 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DSP.js
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+41 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+111 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+29 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+95 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+68977 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+21055 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cross
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000.0000000002
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+53 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+212 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+43 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+196 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+46115 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+10180 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FFTW
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+27 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+79 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+19 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+62 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+102696 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+32172 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RFFTW
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+26 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+70 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+18 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+58 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+113058 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+34545 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nockert
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+512000
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2048000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+117 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+411 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+103 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+393 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+19439 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+5091 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dntj
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+511999.9912375561
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+2047999.9649502244
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+107 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+337 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+82 ms
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+324 ms
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+24340 itr/sec
+\end_layout
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+6175 itr/sec
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Web Audio API
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Web-Audio-API"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Diese Bibliothek beinhaltet neben einer Audio Eingabe zusätzlich auch die Möglichkeit einer Frequenzanalyse des Audio Inputs.
+Diese Bibliothek beinhaltet neben einer Audio Eingabe zusätzlich auch die Möglichkeit einer 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ des Audio Inputs.
  Hier ist jedoch darauf zu achten,
- dass diese Web API nur funktioniert,
+ dass diese Web Audio API nur funktioniert,
  wenn auf den Web Server,
  auf dem das JavaScript-Programm läuft,
  mit "https" zugegriffen wird.
  Diese Bibliothek nutzt hier den Algorithmus
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Bibliothek für den Audio Input
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bibliothek-für-Audio"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1188,6 +4040,13 @@ Um die Eingabe des Mikrofons zu ermöglichen muss diese implementiert werden.
 
 \begin_layout Chapter
 Technische Grundlagen
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Technische-Grundlagen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1197,6 +4056,13 @@ In diesem Kapitel werden die benötigten Grundlagen für das Projekt beschrieben
 
 \begin_layout Section
 JavaScript
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:JavaScript"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1309,10 +4175,59 @@ JavaScript bietet einige Vorteile,
 
 \begin_layout Section
 Diskrete Fouriertransformation
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:DFT"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Die 
+Die Fouriertransformation ist ein nützliches Werkzeug zur Zerlegung von kontinuierlichen Signalen in dessen Frequenzkomponenten.
+ Dies geschieht über folgenden Zusammenhang von Signal oder Funktion 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ mit der Transformierten 
+\begin_inset Formula $F(\omega)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+f(t)\rightarrow F(\omega)\coloneqq\intop_{-\infty}^{\infty}f(t)\cdot e^{-j\omega t}dt\label{eq:Fourier}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "karpfinger_hohere_2022"
+literal "false"
+
+\end_inset
+
+ Seite 854)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Für die digitale Signalverarbeitung ist es wichtig,
+ dass die Fouriertransformation von Rechnern berechnet werden kann.
+ Da digitalisierte Signale jedoch immer abgetastete und nicht kontinuierlich sind,
+ wird hier eine Abwandlung der Fouriertransformation benötigt.
+ Die 
 \begin_inset ERT
 status open
 
@@ -1325,12 +4240,8 @@ ac{DFT}
 
 \end_inset
 
- ermöglicht es Rechnern eine Fouriertransformation durchzuführen.
- Die herkömmliche Fouriertransformation benötigt immer alle Abtastwerte 
-\begin_inset Formula $(x_{n})_{n\epsilon\mathbb{Z}}$
-\end_inset
-
-.Die 
+ bietet hier Abhilfe.
+ Im Gegensatz zur kontinuierlichen Fouriertransformation wird die 
 \begin_inset ERT
 status open
 
@@ -1343,19 +4254,35 @@ ac{DFT}
 
 \end_inset
 
- kann jedoch nur bei zeit- und wertdiskreten Signalen verwendet werden.
- Hier wird also eine endliche Anzahl von Werten betrachtet:
+ auf eine endliche Anzahl an Werten angewendet und kann deshalb numerisch bestimmt werden.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Betrachtet man also ein abgetastetes Signal 
+\begin_inset Formula $x[n]$
+\end_inset
+
+ mit 
+\begin_inset Formula $n=0\ldots N-1$
+\end_inset
+
+,
+ können die abgetasteten Werte folgendermaßen bezeichnet werden:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-(x_{n})_{n=0}^{N-1}\label{eq:Gleichung-1}
+(x_{n})_{n=0}^{N-1}\label{eq:Abgetastet}
 \end{equation}
 
 \end_inset
 
-mit N als Anzahl der Abtastwerte.
+mit N als Anzahl der abgetasteten Werte.
  Außerhalb dieses Intervalls sind die Werte für 
 \begin_inset Formula $x_{n}=0$
 \end_inset
@@ -1378,13 +4305,50 @@ ac{DFT}
 
 \end_inset
 
-ergibt sich die Formel:
+ergibt sich,
+ analog zu Formel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Fourier"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ folgender Zusammenhang zwischen den abgetasteten Werten aus 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Abgetastet"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ und dessen 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-(x_{n})_{n=0}^{N-1}\rightarrow X_{DFT}:=\sum_{n=0}^{N-1}x_{n}\cdot e^{-jn\Omega_{m}}\label{eq:Gleichnung-2}
+(x_{n})_{n=0}^{N-1}\rightarrow X_{DFT}(m):=\sum_{n=0}^{N-1}x_{n}\cdot e^{-jn\Omega_{m}}\label{eq:DFT}
 \end{equation}
 
 \end_inset
@@ -1399,7 +4363,7 @@ mit
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Omega_{m}:=\frac{2\pi m}{N}\label{eq:Gleichung-3}
+\Omega_{m}:=\frac{2\pi m}{N}\label{eq:Omega}
 \end{equation}
 
 \end_inset
@@ -1407,7 +4371,7 @@ mit
 
 \begin_inset Formula 
 \begin{equation}
-m=0,\ldots N-1\label{eq:Gleichung-4}
+m=0,\ldots N-1\label{eq:def-m}
 \end{equation}
 
 \end_inset
@@ -1429,7 +4393,11 @@ ac{DFT}
 
 \end_inset
 
-ist immer genau so groß wie die Anzahl der Abtastwerte,
+ ist immer genau so groß wie die Anzahl der abgetasteten Werte 
+\begin_inset Formula $N$
+\end_inset
+
+,
  die der 
 \begin_inset ERT
 status open
@@ -1444,10 +4412,12 @@ ac{DFT}
 \end_inset
 
 übergeben werden.
-\end_layout
+ 
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 (vgl.
+ 
 \begin_inset CommandInset citation
 LatexCommand autocite
 key "beucher_signale_2019"
@@ -1455,20 +4425,145 @@ literal "false"
 
 \end_inset
 
-Seite 318f.)
+ Seite 318f.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ nutzt das Prinzip des 
+\begin_inset Quotes gld
+\end_inset
+
+divide and conquer
+\begin_inset Quotes grd
+\end_inset
+
+,
+ und funktioniert deshalb nur für abgetastete Werte nach Formel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Abgetastet"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ mit 
+\begin_inset Formula $N=2^{k}$
+\end_inset
+
+ mit 
+\begin_inset Formula $k\in\mathbb{N}$
+\end_inset
+
+.
+ Die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ teilt die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ in viele kleine 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+s und kann somit die Laufzeitkomplexität der Transformation von 
+\begin_inset Formula $\mathcal{O}(N^{2})$
+\end_inset
+
+ zu 
+\begin_inset Formula $\mathcal{O}(N\cdot log_{2}(N))$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+(vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "gilan_optimized_2024"
+literal "false"
+
+\end_inset
+
+ Seite 1)
 \end_layout
 
 \begin_layout Chapter
-Demonstrator für die diskrete Fouriertransformation
+Programmentwicklung des Demonstrators
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Programmentwicklung-des-Demonstr"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 In diesem Kapitel wird die Durchführung des Projekts mit den einzelnen Meilensteinen und Sackgassen beschrieben.
- Außerdem wird auch das Endprodukt geunau beschrieben.
+ Außerdem wird auch das Endprodukt genau beschrieben.
 \end_layout
 
 \begin_layout Section
 Entwicklungsumgebung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Entwicklungsumgebung"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1535,6 +4630,13 @@ live reload
 
 \begin_layout Section
 Programmierung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Programmierung"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1551,6 +4653,13 @@ Genauere Erklärungen zu den einzelnen Dateien erfolgen im Folgenden zu den selb
 
 \begin_layout Subsection
 index.html
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:index.html"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1726,6 +4835,13 @@ name "lis:HTML"
 
 \begin_layout Subsection
 microphone.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:microphone.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2140,6 +5256,13 @@ Objekt-Datei zur Nutzung des Mikrofons über den Browser
 
 \begin_layout Subsection
 sinusGenerator.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:sinusGenerator.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2218,6 +5341,10 @@ f
 \end_inset
 
  ist hierbei die Frequenz und der Parameter 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes gld
 \end_inset
 
@@ -2463,6 +5590,13 @@ Objekt-Datei zur Nutzung des Sinus-Generators
 
 \begin_layout Subsection
 main.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:main.js"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3929,6 +7063,58 @@ Programmteil mit Funktion zum Leeren des Plots.
 
 \begin_layout Section
 Ergebnis
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Ergebnis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Folgenden ist das grafische Ergebnis der Programmierten Elemente aus dem vorangehenden Kapitel zu sehen.
+ In Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Anfangszustand"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ ist der Ausgangszustand bei starten des Programms zu sehen.
+ Hier ist das Zugriffsrecht auf das Mikrofon erteilt.
+ Zudem bietet die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Anfangszustand"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ eine Übersicht über das gesamte Fenster des Browsers und somit ist die Anordnung der einzelnen Elemente (Plot,
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+) zu sehen.
+ In diesem Anfangszustand lässt sich mit der Maus der Plot noch frei drehen.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3978,6 +7164,46 @@ Anfangszustand des Demonstrators nach Erlauben des Mikrofonzugriffs.
 \end_layout
 
 \begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Mikrofon"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zeigt die Ausgabe des Plots nach Betätigung des 
+\begin_inset Quotes gld
+\end_inset
+
+mikrofon
+\begin_inset Quotes grd
+\end_inset
+
+-Tasters in der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ nach wenigen Sekunden.
+ Hier sind die einzelnen Frequenzanalysen ca.
+ alle 10ms abgebildet.
+ Wie schon in Kapitel ...
+ erwähnt ist hier die Auflösung der Frequenzanalyse aus Performance-Gründen auf 256 Punkte beschränkt.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement document
 alignment document
@@ -3987,7 +7213,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/Ausgabe Mikro.png
+	filename img/Ausgabe Mikro zoom.png
 	lyxscale 20
 	special width=\textwidth
 
@@ -4024,6 +7250,32 @@ Ausgabe des Plots mit aktivem Mikrofon.
 \end_layout
 
 \begin_layout Standard
+Die folgender Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sinus"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ stellt den Plot dar,
+ welcher nach betätigen des 
+\begin_inset Quotes gld
+\end_inset
+
+sinus
+\begin_inset Quotes grd
+\end_inset
+
+-Tasters zu sehen ist.
+ Hier ist die Frequenz während der Aufzeichnung variiert um zu zeigen,
+ dass die Frequenzanalyse korrekt funktioniert.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 placement document
 alignment document
@@ -4033,7 +7285,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/Ausgabe Sinus.png
+	filename img/Ausgabe Sinus zoom.png
 	lyxscale 20
 	special width=\textwidth
 
@@ -4069,13 +7321,237 @@ Ausgabe des Plots mit aktiviertem Sinus-Generator.
 
 \end_layout
 
-\begin_layout Chapter
-Ausblick
+\begin_layout Standard
+Die Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GUI"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zeigt die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ als Nahaufnahme.
+ Hier sind die Taster 
+\begin_inset Quotes gld
+\end_inset
+
+mikrofon
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+sinus
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+stop
+\begin_inset Quotes grd
+\end_inset
+
+,
+ 
+\begin_inset Quotes gld
+\end_inset
+
+clear
+\begin_inset Quotes grd
+\end_inset
+
+,
+ sowie den Schieberegler für die Frequenz 
+\begin_inset Quotes gld
+\end_inset
+
+frequenz
+\begin_inset Quotes grd
+\end_inset
+
+ zu sehen.
+ Durch betätigen des Tasters 
+\begin_inset Quotes gld
+\end_inset
+
+mikrofon
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+sinus
+\begin_inset Quotes grd
+\end_inset
+
+ wird die Frequenzanalyse der jeweiligen Klassen-Instanz gestartet.
+ Wichtig ist hier zu beachten,
+ dass vor dem Wechsel zwischen Mikrofoneingang und Sinus-Generator die 
+\begin_inset Quotes gld
+\end_inset
+
+stop
+\begin_inset Quotes grd
+\end_inset
+
+-Taste gedrückt werden muss,
+ da es sonst zu ungewollten Fehlern kommen kann.
+ Während der Frequenzanalyse des Sinus-Generators kann im Betrieb die Frequenz mit dem Schieberegler 
+\begin_inset Quotes gld
+\end_inset
+
+frequenz
+\begin_inset Quotes grd
+\end_inset
+
+ verändert werden.
+ Hier bedarf es keiner Pausierung der Analyse.
+ Die Taste 
+\begin_inset Quotes gld
+\end_inset
+
+clear
+\begin_inset Quotes grd
+\end_inset
+
+ löst,
+ wie schon in Kapitel ...
+ beschrieben,
+ den Reset des Plots aus.
 \end_layout
 
 \begin_layout Standard
-In diesem Kapitel wird ein Ausblich darauf gegeben,
- wie das Endresultat noch verbessert werden könnte.
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/GUI zoom.png
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GUI"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ der Ausgabe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Zusammenfassung
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Zusammenfassung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zusammenfassung
+\end_layout
+
+\begin_layout Chapter
+Ausblick
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Ausblick"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Projekt erfüllt die im Kapitel ...
+ beschriebenen Ziele weitestgehend.
+ Jedoch können noch weitere Verbesserungen vorgenommen werden.
+ Diese beinhalten eine Möglichkeit zur Veränderung der Abtastzeitraums.
+ Im momentanen Zustand des Programms wird eine 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ im Intervall von 
+\begin_inset Formula $10ms$
+\end_inset
+
+ mit 256 Punkten berechnet.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4187,6 +7663,7 @@ literal "false"
 	filename img/statistic_id793628_most-widely-utilized-programming-languages-among-developers-worldwide-2024.png
 	lyxscale 20
 	scale 20
+	special height=.9\textheight
 
 \end_inset
 
