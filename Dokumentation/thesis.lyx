@@ -626,7 +626,7 @@ Bearbeitungszeit:
 \begin_inset Text
 
 \begin_layout Plain Layout
-12 Wochen
+30.09.24 - 02.01.25
 \end_layout
 
 \end_inset
@@ -864,41 +864,67 @@ insertauthor
 \end_layout
 
 \begin_layout Addchap
-Kurzfassung (Abstract)
+Kurzfassung
 \end_layout
 
 \begin_layout Standard
-Hier können Sie die Kurzfassung der Arbeit schreiben.
- Beispielsweise behandelt diese Arbeit eine Darstellung,
- wie die Bearbeitung von wissenschaftlichen Texten auf Basis des \SpecialChar LaTeX
--Textsatzsystems mit Nutzung des \SpecialChar LyX
--Editors umgesetzt werden kann.
- Durch diesen exemplarischen Text werden sowohl einige grundlegende Möglichkeiten dargestellt,
- die sich durch Nutzung der Software ergeben,
- als auch einige Hilfen gegeben,
- wie eine Umsetzung erfolgen kann.
- 
+Die Studienarbeit befasst sich mit der Entwicklung eines Demonstrators für die diskrete Fouriertransformation (DFT) in der Programmiersprache JavaScript.
+ Ziel ist es,
+ die Funktionsweise der DFT interaktiv und anschaulich darzustellen.
+ Der Demonstrator verarbeitet Audiosignale,
+ die entweder über ein Mikrofon oder einen Sinus-Generator mit variabler Frequenz bereitgestellt werden.
+ Anschließend wird die Fourier-Transforamtion des Signals als 3D-Plot visualisiert.
+\end_layout
+
+\begin_layout Standard
+Um die Anforderungen zu erfüllen,
+ werden diverse JavaScript-Bibliotheken wie die Web Audio API zur Signalanalyse und Plotly.js zur Visualisierung verwendet.
+ Die Benutzerinteraktion erfolgt über eine grafische Oberfläche (GUI),
+ die mithilfe von lil-gui.js realisiert wird.
+ Das Programm ist in die Module main.js,
+ microphone.js und sineGenerator.js aufgeteilt.
+\end_layout
+
+\begin_layout Standard
+Der Demonstrator zeigt in einer browserbasierten Umgebung die Funktionsweise der DFT und bietet eine intuitive Möglichkeit,
+ deren Prinzipien zu erkunden.
+ Künftige Verbesserungen umfassen die Optimierung der Performance und die Erweiterung der Benutzeranpassungen,
+ wie z.
+ B.
+ die dynamische Anpassung des Abtastzeitraums.
+\end_layout
+
+\begin_layout Addchap
+Abstract
+\end_layout
+
+\begin_layout Standard
+This study presents the development of an interactive web-based demonstrator for the discrete Fourier transformation (DFT) using JavaScript.
+ The goal is to visualize the DFT’s functionality through real-time signal analysis and frequency spectrum representation.
+ The application supports two input modes:
+ microphone input and a sine wave generator with adjustable frequency.
+ The resulting frequency analysis is displayed as a 3D plot.
+\end_layout
+
+\begin_layout Standard
+Key technologies include the Web Audio API for signal processing and Plotly.js for 3D visualization.
+ User interaction is facilitated by a graphical user interface (GUI) built with lil-gui.js.
+ The implementation is modular,
+ with core components such as main.js,
+ microphone.js,
+ and sineGenerator.js.
+\end_layout
+
+\begin_layout Standard
+The demonstrator effectively illustrates the DFT’s principles in a browser environment,
+ offering an accessible tool for learning and experimentation.
+ Future enhancements aim to improve performance and provide more customization options,
+ such as adjustable sampling intervals.
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
-\end_layout
 
 \end_inset
 
@@ -1018,6 +1044,13 @@ acro{FFT}{Fast Fouriertransformation}
 
 	
 \backslash
+acro{GPU}{Graphics Processing Unit}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
 acro{GUI}{Graphical User Interface}
 \end_layout
 
@@ -1089,27 +1122,25 @@ name "chap:Einleitung"
 
 \begin_layout Standard
 In der Elektrotechnik gewinnt das Thema Signalverarbeitung in Zeiten der Digitalisierung an immer größerer Bedeutung.
- (gibt es hier maybe eine statistik?) Besonders in den Bereichen Bildverarbeitung und Akustik \SpecialChar ldots
- (hier irgendwas über die anwendung in ein,
- zwei sätzen) Aus diesem Grund ist die Fourier Analyse bereits früh im Studium der Elektrotechnik verankert.
- Bei der Fourier Analyse handelt es sich um ein Instrument,
- das Ausgangssignal gefalteter und überlagerter Signale ohne komplexe Rechnungen berechnen zu können.
- Dazu wird das sogenannte Spektrum oder auch der sogenannte Bildbereich erschaffen,
+ Besonders in den Bereichen Bildverarbeitung und Akustik kommt die Fourier-Transformation zur Anwendung.
+ Dort wird diese für Kompressionsverfahren oder Filterung verwendet.
+ Außerdem vereinfacht die Fourier-Transformation die Berechnung einer Signalfaltung.
+ Aus diesem Grund ist die Fourier-Transformation bereits früh im Studium der Elektrotechnik verankert.
+ Für die Fourier-Transformation wird das sogenannte Spektrum (auch Bildbereich genannt) eingeführt,
  in die die Signale transformiert werden,
  dort verrechnet und anschließend rücktransformiert werden können.
  Aufgrund der Abstraktion,
  die durch das Erschaffen dieser neuen Dimension geschaffen wird,
- ergibt sich eine Hürde,
+ ergibt sich die Hürde,
  das Prinzip verständlich erklären zu können.
- Deshalb soll zur Veranschaulichung ein Demonstrator geschaffen werden.
- Mit diesem soll eine grafisch die Verbindung zwischen dem bekannten Zeitbereich und dem abstrakten Bildbereich aufgezeigt werden.
+ Der in diesem Projekt zu entwickelnde Demonstrator dient hier zur weiteren Veranschaulichung.
  Im Verlauf der Bearbeitung wird im ersten Teil die Aufgaben- und Zielstellung ausformuliert.
  Über eine Betrachtung des Stands der Technik werden die unterschiedlichen Möglichkeiten der Herangehensweise aufgezeigt.
  Anschließend werden die technischen Grundlagen geschaffen,
  die sich zum Verständnis und zur Ausarbeitung als notwendig herausstellen.
  Der nächste Abschnitt der Arbeit stellt eine Dokumentation der Realisierung des Projekts dar,
- in der die einzelnen Meilensteine und Hürden ausgearbeitet werden.
- Abschließend wird im Ergebnis die gesammelten Erkenntnisse sowie der finale Stand präsentiert.
+ in der die einzelnen Komponenten des Projekts anhand ihrer Funktion und ihres Nutzens erklärt werden.
+ Abschließend wird im Ergebnis der finale Stand präsentiert.
 \end_layout
 
 \begin_layout Chapter
@@ -1126,7 +1157,7 @@ name "chap:Aufgabenstellung-und-Ziele"
 \begin_layout Standard
 Der Demonstrator ist in der Programmiersprache JavaScript zu entwickeln.
  Dies hat den Zweck,
- dass es sich um eine Web-Anwendung handelt,
+ dass es sich um eine Webanwendung handelt,
  welche leicht mit jedem Browser verwendet werden kann.
  Zum Demonstrieren der 
 \begin_inset ERT
@@ -1142,11 +1173,66 @@ ac{DFT}
 \end_inset
 
  ist die Möglichkeit eines Mikrofon-Input,
- als die Möglichkeit eines Sinussignals mit veränderlicher Frequenz zu implementieren.
+ als auch die Möglichkeit eines Sinussignals mit veränderlicher Frequenz zu implementieren.
  Mit dem Sinussignal wird die Funktionalität des Demonstrators überprüft und vorgeführt.
- Der Mikrofoninput wird verwendet um die Genauigkeit des Demonstrators zu aufzuzeigen.
- Der Schematische Aufbau des Programms wird in der folgenden Abbildung aufgeführt.
- Hier ist zu sehen,
+ Der Schematische Aufbau des Programms wird in der folgenden Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Prog-Schema"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ aufgeführt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/Schema Programm.png
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Prog-Schema"
+
+\end_inset
+
+Schematischer Aufbau des Demonstrators.
+ (eigene Darstellung)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Hier ist zu sehen,
  dass zwischen den Signaleingängen "Mikrofon" und "Sinus" gewählt werden kann.
  Das resultierende Signal wird daraufhin mit Hilfe einer Bibliothek für 
 \begin_inset ERT
@@ -1162,12 +1248,80 @@ ac{FFT}
 \end_inset
 
  in Zeit und Wert diskretisiert und daraufhin transformiert.
- Daraus resultiert dann das Zeitliche Signal in spektraler Auflösung.
- Dieses wird dann grafisch in einem 3-Dimensionalen Plot dargestellt mit einer Achse jeweils für Amplitude,
+ Daraus resultiert dann das zeitliche Signal in spektraler Darstellung.
+ Dieses wird dann grafisch in einem 3-dimensionalen Plot dargestellt mit einer Achse jeweils für Amplitude,
  Zeit und Frequenz.
- Als Vorbild für die grafische Darstellung dient die folgende Abbildung.
- Diese zeigt den grafischen Output eines 3-dimensionalen Frequenzanalyse.
- Solch eine Analyse ist besonders für Audio-Signale sinnvoll.
+ Als Vorbild für die grafische Darstellung dient die folgende Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Spektrogramm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Diese zeigt den grafischen Output eines 3D-Spektrogramms.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/3D_battery_charger_RF_spectrum_over_time.jpg
+	lyxscale 20
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Spektrogramm"
+
+\end_inset
+
+3D-Spektrogramm eines Batterieladegeräts (horizontal:
+ Zeit,
+ vertikal:
+ Frequenz) 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "wikibrief_spektrogramm_nodate"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Solch eine Analyse ist besonders für Audio-Signale sinnvoll.
  Ziel dieser Arbeit ist die Entwicklung einer 3-dimensionalen Frequenzanalyse für Audio-Signale,
  sowie eines Frequenzgenerators mit variabler Frequenz.
  Dieser Demonstrator ist in mindestens zwei verschiedenen Browsern auf Funktion zu testen.
@@ -1203,6 +1357,1549 @@ ac{FFT}
 \end_layout
 
 \begin_layout Section
+Bibliothek für den Audio Input
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bibliothek-für-Audio"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die beste Möglichkeit der Nutzung des Mikrofons in JavaScript bietet die Web Audio API.
+ Diese ist ein Standardbibliothek,
+ welche in vielen Browsern vorhanden ist.
+ Die Kompatibilität zeigt folgende Tabelle.
+ 
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Kompatibilität"
+
+\end_inset
+
+Kompatibilitätsliste der benötigten Funktionen der Web Audio API.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "mozilla_analysernode_2024,mozilla_audiocontext_2024,mozilla_mediadevices_2024,mozilla_oscillatornode_2024"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="13">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="100text%">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Chrome
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Edge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Firefox
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Opera
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Safari
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Chrome Android
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Firefox for Android
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Opera Android
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Safari on iOS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Samsung Internet
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+WebView Android
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+WebView on iOS
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+AudioContext
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+AnalyserNode
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OscillatorNode
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MediaDevices
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+checkmark
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Die Web Audio API nutzt das Konzept eines Audio-Kontexts.
+ Dieser ist ein gerichteter Graph,
+ welcher zeigt,
+ wie der Audio-Stream von dessen Quelle zu dessen Ziel fließt.
+ Der einfachste Audio-Kontext wird in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:AudioContext"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ dargestellt.
+ Hier ist zu sehen,
+ dass der Audio-Stream von der Quelle direkt zum Ziel fließt.
+ Dies ist auch der Graph,
+ welcher in dem Demonstrator Anwendung findet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/AudioContext.png
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:AudioContext"
+
+\end_inset
+
+Einfachster Audio-Kontext,
+ welcher mit der Web Audio API erstellt werden kann.
+ (
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "smus_web_2013"
+literal "false"
+
+\end_inset
+
+ 1.
+ Fundamentals)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eine Alternative zur Nutzung der Web Audio API bietet die Bibliothek 
+\begin_inset Quotes gld
+\end_inset
+
+microphonejs
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Diese Bibliothek nutzt jedoch auch die Web Audio API und ist seit 2018 nicht mehr aktualisiert worden.
+ Deshalb stellt die Nutzung der Web Audio API ohne zusätzliche Bibliothek für dieses Projekt eine höhere Nutzen dar.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "werner_microphonejs_2018"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Section
 Bibliothek für 3D-Visualisierung
 \begin_inset CommandInset label
 LatexCommand label
@@ -1231,9 +2928,88 @@ name "subsec:Three.js"
 
 \begin_layout Standard
 Three.js ist eine Bibliothek,
- mit der 3D Animationen in JavaScript erstellt und angezeigt werden können.
- Hier kann mit dem nötigen Aufwand alles genau so dargestellt werden,
- wie man es möchte.
+ mit der 3D Animationen und Modelle in JavaScript erstellt und angezeigt werden können.
+ Die Bibliothek nutzt als Renderer WebGL.
+ Mit WebGL werden jedoch nur Punkte,
+ Linien und Dreiecke gezeichnet.
+ Three.js stellt hier also eine Bibliothek für die einfache Verwendung von WebGL als Renderer dar,
+ um mit weniger Aufwand 3D Objekte darstellen zu können.
+ Die in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:three-scene"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ dargestellte Grafik veranschaulicht den Zusammenhang verschiedener Three.js Komponenten,
+ die für eine Applikation benötigt werden.
+ Wichtige Bestandteile sind hier der Renderer,
+ die Kamera und die Szene.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/threejs-structure.svg
+	special width=\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:three-scene"
+
+\end_inset
+
+Grafik einer Three.js Applikation.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "threejs_fundamentals_nodate"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit Three.js kann jegliche 3D Applikation bewerkstelligt werden,
+ jedoch ist für die Darstellung eines Plots einiges an Arbeit notwendig,
+ da Three.js hierfür keine vorgefertigte Funktion bietet.
 \end_layout
 
 \begin_layout Subsection
@@ -1248,13 +3024,37 @@ name "subsec:d3.js"
 \end_layout
 
 \begin_layout Standard
-Diese Bibliothek ist eine mächtige low level Bibliothek für die Visualisierung von Daten.
- d3 steht hier für "Data Driven Documents".
- Mit dieser Bibliothek lassen sich 2D,
- sowie 3D Plots von Daten erstellen.
- Hier jedoch mit,
- im Vergleich zu Three.js,
- hohen Aufwand.
+Diese Bibliothek ist eine mächtige 
+\begin_inset Quotes gld
+\end_inset
+
+low-level
+\begin_inset Quotes grd
+\end_inset
+
+ Bibliothek für die Visualisierung von Daten und wurde 2011 von Mike Bostock entwickelt.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+d3
+\begin_inset Quotes grd
+\end_inset
+
+ steht hier für "Data Driven Documents".
+ d3.js bietet eine besonders hohe Flexibilität,
+ mit der die Daten in 2-dimensionalen Plots visualisiert werden können.
+ Jedoch bietet die Bibliothek von Haus aus keine Möglichkeit der Visualisierung in drei Dimensionen.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "d3js_what_nodate"
+literal "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsection
@@ -1269,14 +3069,54 @@ name "subsec:Plotly.js"
 \end_layout
 
 \begin_layout Standard
-Diese Bibliothek steht für verschiedene Programmiersprachen zur verfügung und konzentriert sich nur auf das Anzeigen und Animieren von Plots im speziellen.
- Der Fokus bei dieser Bibliothek liegt also nicht auf das Abdecken von möglichst vielen Anwendungsfällen,
- sondern darauf,
- Plots mit möglichst wenig Aufwand und in kurzer Zeit darstellen zu können.
+Plotly.js ist eine alleinstehende Bibliothek zur Visualisierung von Daten in JavaScript.
+ Diese Bibliothek bietet viele verschiedene Plots zur Auswahl,
+ unter anderem 3D-Plots.
+ Plotly.js nutzt,
+ wie Three.js,
+ WebGL als Renderer,
+ um die 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GPU}
+\end_layout
+
+\end_inset
+
+ für das Rendern der Plots zu verwenden.
+ Dadurch werden die Webanwendungen beschleunigt.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "plotly_plotly_2024"
+literal "false"
+
+\end_inset
+
+) 
+\begin_inset Newline newline
+\end_inset
+
+Außerdem bietet Plotly.js mehrere Funktion zum aktualisieren des Plots an.
+ Diese sind bei Änderungen der angezeigten Werte zu verwenden und laut 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "plotly_function_nodate"
+literal "false"
+
+\end_inset
+
+ viel effizienter als ein neu zeichnen des Plots.
 \end_layout
 
 \begin_layout Standard
-Für dieses Projekt ist letztendlich Plotly.js für die Visualisierung der Daten gewählt worden.
+Für dieses Projekt wird Plotly.js für die Visualisierung der Daten verwendet.
  Diese Entscheidung ist auf den einfachen Aufbau und die Einfache Bedienung zurückzuführen.
 \end_layout
 
@@ -4041,7 +5881,21 @@ name "subsec:Web-Audio-API"
 \end_layout
 
 \begin_layout Standard
-Diese Bibliothek beinhaltet neben einer Audio Eingabe zusätzlich auch die Möglichkeit einer 
+Diese Bibliothek beinhaltet neben einer Audio Eingabe,
+ welche in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bibliothek-für-Audio"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ beschrieben ist,
+ zusätzlich auch die Möglichkeit einen Analyser zu verwenden,
+ mit dem eine 
 \begin_inset ERT
 status open
 
@@ -4054,20 +5908,50 @@ ac{FFT}
 
 \end_inset
 
- des Audio Inputs.
- Hier ist jedoch darauf zu achten,
- dass diese Web Audio API nur funktioniert,
- wenn auf den Web Server,
- auf dem das JavaScript-Programm läuft,
- mit "https" zugegriffen wird.
- Diese Bibliothek nutzt hier den Algorithmus
+ der Audio Eingabe durchgeführt werden kann.
+ Die Audio Eingabe ist die Quelle,
+ die auf den Stream geladen wird und der Analyser ist das Ziel des Streams (wie in Abbildung 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:AudioContext"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ gezeigt).
+ Die Kompatibilität des Analysers der Web Audio API ist in der Tabelle 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Kompatibilität"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ dargestellt.
+ Die Berechnung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
 \end_layout
 
-\begin_layout Section
-Bibliothek für den Audio Input
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Bibliothek-für-Audio"
+\end_inset
+
+ wird folgendermaßen durchgeführt:
+\begin_inset Formula 
+\begin{equation}
+X[k]=\frac{1}{N}\sum_{n=0}^{N-1}\hat{{x}}[n]\cdot W_{N}^{-kn}\label{eq:API-FFT}
+\end{equation}
 
 \end_inset
 
@@ -4075,15 +5959,43 @@ name "sec:Bibliothek-für-Audio"
 \end_layout
 
 \begin_layout Standard
-Um die Eingabe des Mikrofons zu ermöglichen muss diese implementiert werden.
- Hierfür kann mit einer Bibliothek gearbeitet werden oder die oben genannte Web Audio API verwendet werden.
- In dieser Arbeit wird auf die Verwendung einer zusätzlichen Bibliothek verzichtet,
- da eine solche Bibliothek wie z.B.
- Microphone.js nur eine leicht einfachere Verwendung der Web Audio API darstellt.
- Da jedoch die Signalverarbeitung mittels FFT über die Web Audio API leichter zu implementieren,
- wenn auch dessen eigener AudioInput genutzt wird,
- wird deshalb darauf zurückgegriffen.
- Zudem ist mit der Web Audio API Browserübergreifend die Funktionalität sichergestellt.
+mit 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k=0,\ldots\frac{N}{2}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W_{N}=e^{\frac{j2\pi}{N}}
+\]
+
+\end_inset
+
+ und 
+\begin_inset Formula $\hat{{x}}[n]$
+\end_inset
+
+ als mit dem Blackman Fenster gefenstertes Signal.
+ (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "mozilla_fourier_nodate"
+literal "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Chapter
@@ -4114,11 +6026,12 @@ name "sec:JavaScript"
 \end_layout
 
 \begin_layout Standard
-JavaScript ist eine Programmiersprache,
- welche 1995 erschienen ist.
+JavaScript ist eine interpretierte Programmiersprache,
+ welche 1995 von Brendan Eich entwickelt wurde.
  Sie wird vor allem dazu genutzt,
  um Webseiten dynamischer und interaktiver zu gestallten,
- bietet jedoch auch die Möglichkeit Desktop-Apps und Backend-APIs zu erstellen.Zudem zählt sie zu den beliebtesten Programmiersprachen weltweit .
+ bietet jedoch auch die Möglichkeit Desktop-Apps und Backend-APIs zu erstellen.
+ Zudem zählt sie zu den beliebtesten Programmiersprachen weltweit .
  (vgl.
  
 \begin_inset CommandInset citation
@@ -4210,15 +6123,50 @@ nolink "false"
  bestätigt.
  Diese zeigt das Ergebnis einer Umfrage von Stack Overflow im Juli 2024.
  62,3% der Teilnehmer wählten hier JavaScript als Programmiersprache,
- welche sie benutzen und gerne weiterhin benutzen möchten.
+ welche sie verwenden und gerne weiterhin benutzen möchten.
 \end_layout
 
 \begin_layout Standard
-JavaScript bietet einige Vorteile,
- welche das Programmieren vereinfachen.
- Diese sind zum Beispiel die dynamische Typisierung von Variablen.
- Denn hier ist ähnlich wie bei Python der Typ einer Variable nicht weiter wichtig.
- Dieser wird vom Interpreter automatisch nach Inhalt der Variable festgelegt.
+Die Hauptmerkmale von JavaScript sind:
+\end_layout
+
+\begin_layout Itemize
+Dynamische Typisierung von Variablen
+\end_layout
+
+\begin_layout Itemize
+Event-Basierte Funktionalität
+\end_layout
+
+\begin_layout Itemize
+Plattformunabhängig
+\end_layout
+
+\begin_layout Itemize
+Objektorientiert
+\end_layout
+
+\begin_layout Standard
+Die dynamische Typisierung bedeutet,
+ dass die Variablen vor der Nutzung nicht deklariert werden müssen.
+ Dies wird vom Interpreter während der Laufzeit übernommen.
+ Durch die Event-Basierte Funktionalität kann ein JavaScript Programm auf Nutzereingaben über beispielsweise eine 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ reagieren.
+ Die Plattformunabhängigkeit dieser Programmiersprache hat zu Folge,
+ dass die in JavaScript verfassten Programme sich in jedem Browser ausführen lassen.
+ 
 \end_layout
 
 \begin_layout Section
@@ -4641,10 +6589,7 @@ Live Server
  verwendet,
  welche das Hosten eines lokalen Servers für HTML-Dateien ermöglicht.
  JavaScript Dateien,
- welche in die HTML-Datei eingebettet werden,
- wie schon in Kapitel ...
- erwähnt,
- auf der Client-Seite mit dessen Hardware ausgeführt.
+ welche in die HTML-Datei eingebettet werden auf der Client-Seite mit dessen Hardware ausgeführt.
  Dies ermöglicht eine geringe Auslastung auf der Server-Seite.
  Weiter hat die Erweiterung 
 \begin_inset Quotes gld
@@ -4741,7 +6686,7 @@ microphone.js
 \begin_inset Quotes gld
 \end_inset
 
-sinusGenerator.js
+sineGenerator.js
 \begin_inset Quotes grd
 \end_inset
 
@@ -4830,7 +6775,7 @@ status open
 
 \begin_layout Plain Layout
 
-    <script src="sinusGenerator.js"></script>
+    <script src="sineGenerator.js"></script>
 \end_layout
 
 \begin_layout Plain Layout
@@ -4913,7 +6858,15 @@ nolink "false"
 
  abgebildet.
  Diese ist die JavaScript-Datei,
- welche das Objekt für den Mikrofoneingang,
+ welche die Klasse 
+\begin_inset Quotes gld
+\end_inset
+
+Microphone
+\begin_inset Quotes grd
+\end_inset
+
+,
  sowie die dazugehörigen Methoden enthält.
  Hier wird die Standardbibliothek 
 \begin_inset Quotes gld
@@ -4924,7 +6877,7 @@ Web Audio API
 \end_inset
 
  verwendet.
- Der Konstruktor des Objekts initialisiert zuerst die Verbindung zum Mikrofon.
+ Der Konstruktor der Klasse initialisiert zuerst die Verbindung zum Mikrofon.
  Hierfür wird die Funktion 
 \begin_inset Quotes gld
 \end_inset
@@ -5303,7 +7256,7 @@ Objekt-Datei zur Nutzung des Mikrofons über den Browser
 \end_layout
 
 \begin_layout Subsection
-sinusGenerator.js
+sineGenerator.js
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:sinusGenerator.js"
@@ -5317,7 +7270,7 @@ name "subsec:sinusGenerator.js"
 \begin_inset Quotes gld
 \end_inset
 
-sinusGenerator.js
+sineGenerator.js
 \begin_inset Quotes grd
 \end_inset
 
@@ -7121,7 +9074,18 @@ name "sec:Ergebnis"
 \end_layout
 
 \begin_layout Standard
-Im Folgenden ist das grafische Ergebnis der Programmierten Elemente aus dem vorangehenden Kapitel zu sehen.
+Im Folgenden ist das grafische Ergebnis der programmierten Elemente aus dem vorangehenden Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Programmierung"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zu sehen.
  In Abbildung 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7246,9 +9210,36 @@ ac{GUI}
 
  nach wenigen Sekunden.
  Hier sind die einzelnen Frequenzanalysen ca.
- alle 10ms abgebildet.
- Wie schon in Kapitel ...
- erwähnt ist hier die Auflösung der Frequenzanalyse aus Performance-Gründen auf 256 Punkte beschränkt.
+ alle 
+\begin_inset Formula $10ms$
+\end_inset
+
+ abgebildet.
+ Die in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:microphone.js"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ erwähnte Auflösung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ mit 256 Datenpunkten ist aus Performancegründen gewählt.
 \end_layout
 
 \begin_layout Standard
@@ -7487,7 +9478,28 @@ clear
 \end_inset
 
  löst,
- wie schon in Kapitel ...
+ wie schon in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:main.js"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ zu Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:clear"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
  beschrieben,
  den Reset des Plots aus.
 \end_layout
@@ -7562,26 +9574,33 @@ name "chap:Zusammenfassung"
 \end_layout
 
 \begin_layout Standard
-Zusammenfassung
-\end_layout
+Dieses Projekt hat als Ziel die interaktive Darstellung der 
+\begin_inset ERT
+status open
 
-\begin_layout Chapter
-Ausblick
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Ausblick"
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
 
 \end_inset
 
-
+ in einer Webanwendung und wird im Rahmen des Studiengangs Elektrotechnik an der Dualen Hochschule Baden-Württemberg Mannheim durchgeführt.
+ Die Zielsetzung der Arbeit konzentriert sich auf folgende Punkte:
 \end_layout
 
-\begin_layout Standard
-Das Projekt erfüllt die im Kapitel ...
- beschriebenen Ziele weitestgehend.
- Jedoch können noch weitere Verbesserungen vorgenommen werden.
- Diese beinhalten eine Möglichkeit zur Veränderung der Abtastzeitraums.
- Im momentanen Zustand des Programms wird eine 
+\begin_layout Itemize
+Verarbeiten von Audiosignalen eines Mikrofons.
+\end_layout
+
+\begin_layout Itemize
+Simulieren eines Sinus-Generators mit variabler Frequenz.
+\end_layout
+
+\begin_layout Itemize
+Visualisierung der 
 \begin_inset ERT
 status open
 
@@ -7594,12 +9613,155 @@ ac{FFT}
 
 \end_inset
 
- im Intervall von 
-\begin_inset Formula $10ms$
+ des Audiosignals und des Sinus-Generators in einem 3-dimensionalen Plot.
+\end_layout
+
+\begin_layout Standard
+Umgesetzt werden diese Ziele folgendermaßen:
+\end_layout
+
+\begin_layout Itemize
+Nutzung der Web Audio API für die Mikrofoneingabe,
+ den Sinus-Generator und die Umsetzung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
 \end_inset
 
- mit 256 Punkten berechnet.
+ mit 256 Datenpunkten.
+\end_layout
+
+\begin_layout Itemize
+3D-Visualisierung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ mittels der JavaScript Bibliothek 
+\begin_inset Quotes gld
+\end_inset
+
+Plotly.js
+\begin_inset Quotes grd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Interaktion mittels 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{GUI}
+\end_layout
+
+\end_inset
+
+ mithilfe der Bibliothek 
+\begin_inset Quotes gld
+\end_inset
+
+lil-gui.js
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Programmstruktur unterteilt sich in mehrere Dateien.
  
+\end_layout
+
+\begin_layout Itemize
+index.html
+\end_layout
+
+\begin_layout Itemize
+main.js
+\end_layout
+
+\begin_layout Itemize
+microphone.js
+\end_layout
+
+\begin_layout Itemize
+sineGenerator.js
+\end_layout
+
+\begin_layout Standard
+Die HTML-Datei wird benötigt um die JavaScript-Dateien im Browser ausführen zu können.
+ Die Datei main.js vereint die verwendeten Bibliotheken und die zwei weiteren JavaScript-Dateien um den Demonstrator zu realisieren.
+\end_layout
+
+\begin_layout Standard
+Ergebnis dieser Arbeit ist ein intuitive Visualisierung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ mittels JavaScript im Browser mit Wählbarer Signalquelle,
+ sowie der Möglichkeit einer Löschung des Plots und beenden der Analyse.
+\end_layout
+
+\begin_layout Standard
+Verbessert werden kann des Ergebnis mit einer Performancesteigerung um eine höhere Auflösung der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{FFT}
+\end_layout
+
+\end_inset
+
+ zu erlauben,
+ sowie eines dynamisch einstellbaren Abtastzeitraums,
+ um die eigenheiten der 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ac{DFT}
+\end_layout
+
+\end_inset
+
+ besser darstellen zu können.
 \end_layout
 
 \begin_layout Standard
